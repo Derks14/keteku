@@ -6,7 +6,7 @@ export default function Footer() {
           <div>Thanks for visiting or whatever makes that kind of sene</div>
           <div> Add a digital signature animation here ( fireship has an animation svg here )</div>
           <div>
-            <p> </p>©2024 Derrick Keteku Built with ❤️ by yours truly.
+            <p> ©2024 Derrick Keteku Built with ❤️ by yours truly.</p>
           </div>
         </div>
       </div>

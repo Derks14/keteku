@@ -20,8 +20,8 @@
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: hsl(255, 46%, 50%);
+    --primary-foreground: hsl(255, 0%, 100%);
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -84,4 +84,19 @@
     /* put all the classes after the @apply keyword */
     @apply m-10 delay-75 border-l;
   }
+
+  .floating-ball {
+    @apply absolute top-48 h-64 w-64 rounded-full animate-blob opacity-40 mix-blend-multiply blur-2xl dark:top-72 dark:h-36 dark:w-36 dark:opacity-90 dark:mix-blend-hard-light dark:blur-[90px];
+  }
+
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
 }

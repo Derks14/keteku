@@ -22,7 +22,7 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "var(--primary)",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -76,12 +76,27 @@ const config: Config = {
           from: { height: "var(--radix-collapsible-content-height)" },
           to: { height: "0" },
         },
+        blob: {
+          "0%": {
+            transform: " translate(0px, 0px) scale(1 )",
+          },
+          "33%": {
+            transform: "translate(30px, -80px) scale(1.4)",
+          },
+          "66%": {
+            transform: "translate(-50px, 20px) scale(1.2)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "collapsible-down": "collapsible-down 0.5s ease-out",
         "collapsible-up": "collapsible-up 0.5s ease-out",
+        blob: "blob 7s infinite linear",
       },
     },
   },

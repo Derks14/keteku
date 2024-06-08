@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Dosis, Inter, Magra, Manrope } from "next/font/google";
 import "./globals.css";
 import React from "react";
+import { cn } from "@/services/utils";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,7 +35,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={manrope.className}>{children}</body>
+      <body className={cn("overflow-hidden", dosis.className)}>
+        <div className="h-screen max-h-screen overflow-hidden">{children}</div>
+      </body>
     </html>
   );
 }
