@@ -1,6 +1,7 @@
 import Footer from "@/components/sections/footer";
+import { ReactNode } from "react";
 
-const Main = () => {
+const Main = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <main className=" grow overflow-auto p-8">
@@ -10,6 +11,7 @@ const Main = () => {
             <div className="floating-ball animation-delay-2000 right-[24rem] bg-fuchsia-400"></div>
 
             <div className="floating-ball animation-delay-4000 right-[13rem]  bg-sky-200"></div>
+            <div className="">{children}</div>
           </div>
 
           <div>

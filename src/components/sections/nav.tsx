@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NavLink } from "@/components/ui/nav-link";
 
 const Nav = () => {
   const links: { label: string; path: string }[] = [
@@ -23,14 +24,14 @@ const Nav = () => {
   return (
     <>
       <aside className="h-full w-32  min-w-[8rem]  p-4 py-8">
-        <div className=" flex w-full items-center justify-center">logo</div>
+        <div className=" flex w-full items-center justify-center">
+          <Link href="/">logo</Link>
+        </div>
         <nav className="flex h-full flex-col items-center justify-between py-8">
           {/*one*/}
           <div className=" ">
             {links.map((link) => (
-              <div className="mt-10 rotate-[270deg] font-medium" key={link.path}>
-                <Link href={link.path}>{link.label}</Link>
-              </div>
+              <NavLink key={link.path} path={link.path} label={link.label} />
             ))}
           </div>
           <div className="space-y-4">
