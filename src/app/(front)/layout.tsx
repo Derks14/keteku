@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <>
       <div className="flex h-full w-full flex-auto overflow-hidden">
         <Nav />
-        <Main children={children} />
+        <Main>{children}</Main>
       </div>
     </>
   );
