@@ -35,6 +35,11 @@
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
+
+    --mouse-x: 100px;
+    --mouse-y: 100px;
+    --card-color: hsl(0, 0%, 100%);
+
   }
 
   @media (prefers-color-scheme: dark) {
@@ -99,4 +104,42 @@
     animation-delay: 4s;
   }
 
-}
+  .bg-custom-radial {
+    background: radial-gradient(
+            600px at var(--mouse-x) var(--mouse-y),
+            rgba(120, 120, 120, 0.06),
+            transparent 40%);
+  }
+
+  .bg-custom-card-border {
+    background: radial-gradient(
+            350px at var(--mouse-x) var(--mouse-y),
+            rgba(120, 120, 120, 0.03),
+            transparent 40%);
+  }
+
+  .card-content {
+    background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
+    rgb(var(--background-start-rgb));
+    margin: 1px;
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    border-radius: inherit;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .bg-custom-radial {
+      background: radial-gradient(
+              500px at var(--mouse-x) var(--mouse-y),
+              rgba(255,255,255, 0.15),
+              transparent 40%);
+    }
+
+    .card-content {
+      border-radius: inherit;
+
+    }
+
+  }
+
+  }
