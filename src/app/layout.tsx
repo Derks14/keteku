@@ -3,6 +3,7 @@ import { Dosis, Inter, Magra, Manrope } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { cn } from "@/services/utils";
+import { dank } from "@/services/font";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,18 +16,6 @@ const dosis = Dosis({
   subsets: ["latin"],
 });
 
-const magra = Magra({
-  weight: "400",
-  display: "swap",
-  subsets: ["latin"],
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-manrope",
-});
-
 export const metadata: Metadata = {
   title: "Derrick Kwabena Keteku",
   description: "Software Engineer with over 3 years of building problem solving applications",
@@ -35,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={cn("overflow-hidden", dosis.className)}>
+      <body className={cn("overflow-hidden tracking-tight", dank.className)}>
         <div className="h-screen max-h-screen overflow-hidden">{children}</div>
       </body>
     </html>

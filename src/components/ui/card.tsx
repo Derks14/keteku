@@ -24,14 +24,16 @@ const Card = ({ children, className }: CardProps) => {
     <div
       onMouseMove={onMouseMove}
       className={cn(
-        "h-[20rem] md:h-[16rem] rounded-xl relative cursor-pointer " +
+        "h-[16rem] md:h-full rounded-xl relative cursor-pointer " +
           "before:content-[''] before:absolute before:h-full before:rounded-xl before:left-0 before:top-0 before:w-full before:z-[2] before:bg-custom-radial " +
           "bg-black/[0.08] border border-black/[0.09] ",
         "dark:bg-white/[0.09] dark:border dark:border-white/[0.09]",
         className,
       )}
     >
-      {children}
+      <div className="flex h-full flex-col-reverse p-10">
+        <div>{children}</div>
+      </div>
     </div>
   );
 };

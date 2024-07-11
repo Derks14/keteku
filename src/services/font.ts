@@ -13,6 +13,7 @@ export const dm_sans = DM_Sans({
   variable: "--font-dm-sans",
   weight: ["400", "500", "700"],
 });
+
 export const satoshi = localFont({
   display: "swap",
   src: [
@@ -26,6 +27,21 @@ export const satoshi = localFont({
     },
   ],
   variable: "--font-satoshi",
+});
+
+export const dank = localFont({
+  display: "swap",
+  variable: "--font-dank",
+  src: [
+    {
+      path: "../../public/fonts/Dank.Mono.Italic.otf",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/Dank.Mono.Regular.otf",
+      style: "normal",
+    },
+  ],
 });
 
 // export const fontMono = FontMono({

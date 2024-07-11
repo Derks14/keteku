@@ -25,7 +25,7 @@ const Nav = () => {
     <>
       <aside className="h-full w-32  min-w-[8rem]  p-4 py-8">
         <div className=" flex w-full items-center justify-center">
-          <Link href="/">logo</Link>
+          <Link href="/">Derrick.Keteku</Link>
         </div>
         <nav className="flex h-full flex-col items-center justify-between py-8">
           {/*one*/}

@@ -1,19 +1,68 @@
 import Card from "@/components/ui/card";
+import { Dosis, Cookie, Nova_Mono, JetBrains_Mono } from "next/font/google";
+import { cn } from "@/services/utils";
+import { dank } from "@/services/font";
+import Wrapper from "@/components/ui/wrapper";
+
+const cookie = Cookie({
+  weight: "400",
+  subsets: ["latin"],
+});
+const dosis = Dosis({
+  display: "swap",
+  subsets: ["latin"],
+});
+
+const nova = Nova_Mono({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const jetbrains = JetBrains_Mono({
+  display: "swap",
+  subsets: ["latin"],
+});
 
 const Home = () => {
   return (
-    <div className="h-full w-full">
-      <div className="grid h-full w-full gap-6 md:grid-cols-4 md:grid-rows-3">
-        <Card className="col-span-2"> </Card>
+    <>
+      <Wrapper page="Home" row_cols_class="md:grid-cols-4 md:grid-rows-3">
+        <Card className="col-span-2">
+          <div className="flex">
+            <div className="py-2">
+              <h1 className={cn("text-5xl font-medium tracking-wide", dosis.className)}>
+                Derrick Keteku.
+              </h1>
+            </div>
+            <div></div>
+          </div>
+          <div>
+            <p className="">Software and Cloud Security Engineer based in Sydney</p>
+          </div>
+        </Card>
+        <Card className="">
+          <div>frontend project</div>
+          <div>KETEKU</div>
+        </Card>
+        <Card className="">
+          <div>Backend Project</div>
+          <div>BENTSURVUCE WHATEVER</div>
+        </Card>
+        <Card className="">
+          <div>Certificates</div>
+          <div>AWS SOLUTIONS ARCHITECT </div>
+        </Card>
+        <Card className="">
+          <div>article</div>
+          <div>BUILDING & DEPLOYING PORTFOLIO</div>
+        </Card>
         <Card className=""> </Card>
         <Card className=""> </Card>
         <Card className=""> </Card>
+        <Card className="col-span-2"> TOOLS </Card>
         <Card className=""> </Card>
-        <Card className="col-span-2"> </Card>
-        <Card className="col-span-2"> </Card>
-        <Card className="col-span-2"> </Card>
-      </div>
-    </div>
+      </Wrapper>
+    </>
   );
 };
 
