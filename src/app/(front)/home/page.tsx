@@ -37,7 +37,7 @@ const Home = () => {
             <div></div>
           </div>
           <div>
-            <p className="">Software and Cloud Security Engineer based in Sydney</p>
+            <p className="">Cloud Native Software Engineer based in Sydney</p>
           </div>
         </Card>
         <Card className="">

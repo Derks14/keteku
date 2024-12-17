@@ -12,7 +12,7 @@ export default function About() {
         <Card className="col-span-2 col-start-2 row-span-2 ">
           <div>About Me</div>
           <div>Derrick Keteku</div>
-          <div>I'm a software engineer blah blah blah blah whatever here</div>
+          <div>Im a software engineer blah blah blah blah whatever here</div>
           <div>Tell them to open a card to learn about a certain experience </div>
           <div></div>
         </Card>
