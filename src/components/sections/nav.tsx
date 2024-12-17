@@ -24,8 +24,10 @@ const Nav = () => {
   return (
     <>
       <aside className="h-full w-32  min-w-[8rem]  p-4 py-8">
-        <div className=" flex w-full items-center justify-center">
-          <Link href="/">Derrick.Keteku</Link>
+        <div className=" flex w-full items-center justify-center font-bold">
+          <Link className="text-sm" href="/">
+            Keteku.
+          </Link>
         </div>
         <nav className="flex h-full flex-col items-center justify-between py-8">
           {/*one*/}
