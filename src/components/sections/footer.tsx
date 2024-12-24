@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer>
-      <div className="mx-auto w-[80%] max-w-[1240px] ">
+      <div className="mx-auto w-[80%] max-w-[1240px] pt-12">
         <div className="text-center">
           <div>Thanks for visiting or whatever makes that kind of sene</div>
           <div> Add a digital signature animation here ( fireship has an animation svg here )</div>
