@@ -23,7 +23,7 @@ const Nav = () => {
   ];
   return (
     <>
-      <aside className="h-full w-32  min-w-[8rem]  p-4 py-8">
+      <aside className="hidden h-full  w-32 min-w-[8rem] p-4 py-8 md:block">
         <div className=" flex w-full items-center justify-center font-bold">
           <Link className="text-sm" href="/">
             Keteku.

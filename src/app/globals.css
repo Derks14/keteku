@@ -127,6 +127,23 @@
     border-radius: inherit;
   }
 
+  .open-hamburger {
+    transform: rotate(90deg);
+  }
+
+
+  .open-hamburger .hamburger-top {
+    transform: rotate(45deg)
+  }
+
+  .open-hamburger .hamburger-middle {
+    display: none;
+  }
+
+  .open-hamburger .hamburger-bottom {
+    transform: rotate(-45deg)
+  }
+
   @media (prefers-color-scheme: dark) {
     .bg-custom-radial {
       background: radial-gradient(
