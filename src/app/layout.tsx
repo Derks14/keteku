@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={cn("overflow-hidden tracking-tight", dank.className)}>
+      <body className={cn("overflow-hidden tracking-tight dark", dank.className)}>
         <ThemeProvider>
           <div className="h-screen max-h-screen overflow-hidden">{children}</div>
         </ThemeProvider>
