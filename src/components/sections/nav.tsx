@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { NavLink } from "@/components/ui/nav-link";
 
 const Nav = () => {
@@ -36,21 +37,21 @@ const Nav = () => {
               <NavLink key={link.path} path={link.path} label={link.label} />
             ))}
           </div>
-          <div className="space-y-4">
-            <div>
+          <div className="space-y-5 text-2xl">
+            <div className="rounded-lg p-2 hover:bg-accent hover:text-primary">
               <a target="_blank" href="https:/github.com/Derks14">
-                Github
+                <FaGithub />
               </a>
             </div>
 
-            <div>
-              <a target="_blank" href="https://linkedIn.com">
-                LinkedIn
+            <div className="rounded-lg p-2 hover:bg-accent hover:text-primary">
+              <a target="_blank" href="https://www.linkedin.com/in/derrick-keteku-11a034174/">
+                <FaLinkedin />
               </a>
             </div>
-            <div>
+            <div className="rounded-lg p-2 hover:bg-accent hover:text-primary">
               <a target="_blank" href="htttps://twitter.com/4teeeeeen">
-                Twitter
+                <FaTwitter />
               </a>
             </div>
           </div>

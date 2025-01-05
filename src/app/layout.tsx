@@ -4,6 +4,7 @@ import "./globals.css";
 import React from "react";
 import { cn } from "@/services/utils";
 import { dank } from "@/services/font";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={cn("overflow-hidden tracking-tight", dank.className)}>
-        <div className="h-screen max-h-screen overflow-hidden">{children}</div>
+        <ThemeProvider>
+          <div className="h-screen max-h-screen overflow-hidden">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

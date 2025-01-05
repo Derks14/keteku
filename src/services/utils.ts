@@ -7,9 +7,10 @@ export function cn(...inputs: ClassValue[]) {
 
 export const toggleMobileNav = () => {
   console.log("hello");
-  const sidebar = document.getElementById("mobileSideBar") as HTMLElement;
+  const sidebar = document.getElementById("mobile-nav") as HTMLElement;
   const hamburger = document.getElementById("hamburger") as HTMLElement;
   hamburger.classList.toggle("open-hamburger");
-  // sidebar.classList.toggle("-translate-x-full");
-  // document.body.classList.toggle("overflow-hidden");
+  sidebar.classList.toggle("-translate-y-full");
+  document.body.classList.toggle("overflow-hidden");
+  document.body.classList.toggle("fixed");
 };

@@ -1,5 +1,5 @@
-"use client";
-import { toggleMobileNav } from "@/services/utils";
+import MobileTopNav from "@/components/sections/mobile-top-nav";
+import { ImSun } from "react-icons/im";
 
 interface TopNavProps {
   title: string;
@@ -14,22 +14,14 @@ const topNav = ({ title }: TopNavProps) => {
           <span className="text-primary">do it with shadow</span>
           <h1 className="text-6xl ">{title}</h1>
         </div>
-        <div>toggle day and night</div>
+        <div>
+          <button className="p-2 text-3xl text-primary hover:rounded-lg hover:bg-accent">
+            <ImSun />
+          </button>
+        </div>
       </div>
 
-      {/*  mobile*/}
-      <div className="flex items-center justify-between pb-6 sm:hidden">
-        <div>keteku</div>
-        <button
-          onClick={toggleMobileNav}
-          id="hamburger"
-          className="flex cursor-pointer flex-col items-end justify-center gap-1"
-        >
-          <span className="hamburger-top block h-0.5 w-7 rounded bg-primary transition-all duration-700"></span>
-          <span className="hamburger-middle block h-0.5 w-5 rounded bg-primary transition-all duration-700"></span>
-          <span className="hamburger-bottom block h-0.5 w-7 rounded bg-primary transition-all duration-700"></span>
-        </button>
-      </div>
+      <MobileTopNav />
     </>
   );
 };

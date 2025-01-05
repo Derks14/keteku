@@ -20,7 +20,7 @@ const Main = ({ children }: { children: ReactNode }) => {
           </div>
 
           {/* footer */}
-          <div className="mt-8">
+          <div className="mt-8 pb-10 md:pb-4">
             <Footer />
           </div>
         </div>
