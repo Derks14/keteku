@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <>
       <Wrapper page="Home" row_cols_class="md:grid-cols-4 md:grid-rows-3">
-        <Card className="col-span-2">
+        <Card className="md:col-span-2">
           <div className="flex">
             <div className="py-2">
               <h1 className={cn("text-5xl font-medium tracking-wide", dosis.className)}>

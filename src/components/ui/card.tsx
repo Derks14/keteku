@@ -26,8 +26,7 @@ const Card = ({ children, className }: CardProps) => {
       className={cn(
         "h-[16rem] md:h-full rounded-xl relative cursor-pointer " +
           "before:content-[''] before:absolute before:h-full before:rounded-xl before:left-0 before:top-0 before:w-full before:z-[2] before:bg-custom-radial " +
-          "bg-black/[0.08] border border-black/[0.09] ",
-        "dark:bg-white/[0.09] dark:border dark:border-white/[0.09]",
+          "bg-black/[0.08] border border-black/[0.09] dark:bg-white/[0.09] dark:border dark:border-white/[0.09]",
         className,
       )}
     >

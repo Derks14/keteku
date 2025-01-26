@@ -12,7 +12,7 @@ const wrapper = ({ children, page, row_cols_class }: wrapper_props) => {
   return (
     <div className="h-full w-full">
       <TopNav title={page}></TopNav>
-      <div className={cn("grid h-full w-full gap-4", row_cols_class)}>{children}</div>
+      <div className={cn("md:grid h-full md:gap-3 w-full", row_cols_class)}>{children}</div>
     </div>
   );
 };

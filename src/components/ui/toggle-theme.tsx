@@ -1,6 +1,6 @@
 "use client";
 
-import { ImSun } from "react-icons/im";
+import { BsSun } from "react-icons/bs";
 import { useContext } from "react";
 import { ThemeContext } from "@/components/context/theme-context";
 
@@ -22,7 +22,6 @@ const ToggleTheme = () => {
         console.log("light");
     }
     setTheme(currentTheme);
-    // document.documentElement.classList.replace(theme, currentTheme);
   };
 
   return (
@@ -32,7 +31,7 @@ const ToggleTheme = () => {
           onClick={toggleTheme}
           className="p-2 text-3xl text-primary hover:rounded-lg hover:bg-accent"
         >
-          <ImSun />
+          <BsSun />
         </button>
       </div>
     </>
