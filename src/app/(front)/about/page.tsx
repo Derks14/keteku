@@ -30,7 +30,10 @@ export default function About() {
         </Card>
 
         <Card>SCHOOL </Card>
-        <Card>WORK EXPERIENCE</Card>
+        <Card>WORK EXPERIENCES</Card>
+        <Card className="col-span-full">
+          GET IN TOUCH NOW
+        </Card>
       </Wrapper>
     </>
   );

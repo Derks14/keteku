@@ -16,11 +16,11 @@ const Nav = () => {
       label: "Blog",
       path: "/blog",
     },
-    {
-      label: "Contact",
-      path: "/contact",
-    },
-    { label: "Resume", path: "/resume" },
+    // {
+    //   label: "Contact",
+    //   path: "/contact",
+    // },
+    // { label: "Resume", path: "/resume" },
   ];
   return (
     <>

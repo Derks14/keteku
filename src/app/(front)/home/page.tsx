@@ -49,8 +49,8 @@ const Home = () => {
           <div>BENTSURVUCE WHATEVER</div>
         </Card>
         <Card className="">
-          <div>Certificates</div>
-          <div>AWS SOLUTIONS ARCHITECT </div>
+          <div>Certificate</div>
+          <div>AWS CLOUD PRACTITIONER </div>
         </Card>
         <Card className="">
           <div>article</div>
