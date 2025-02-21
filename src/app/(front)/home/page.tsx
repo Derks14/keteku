@@ -56,8 +56,14 @@ const Home = () => {
           <div>article</div>
           <div>BUILDING & DEPLOYING PORTFOLIO</div>
         </Card>
-        <Card className=""> </Card>
-        <Card className=""> </Card>
+        <Card className="">
+          <div>Club president</div>
+          <div>UTS AFRICAN SOCIETY</div>
+        </Card>
+        <Card className="">
+          <div>AI project</div>
+          <div>ACCENT MODEL</div>
+        </Card>
         <Card className=""> </Card>
         <Card className="col-span-2"> TOOLS </Card>
         <Card className=""> </Card>

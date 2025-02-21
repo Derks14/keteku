@@ -31,7 +31,7 @@ const Card = ({ children, className }: CardProps) => {
         className,
       )}
     >
-      <div className="flex h-full flex-col-reverse p-4 md:p-10">
+      <div className="flex h-full flex-col-reverse p-4 md:p-6">
         <div>{children}</div>
         <div> </div>
       </div>
