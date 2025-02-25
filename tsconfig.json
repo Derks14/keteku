@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "strict": true,
+    "moduleResolution": "node",
     "paths": {
       "@/*": ["src/*"]
     }
@@ -9,5 +11,7 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json"}
-  ]
+  ],
+  "exclude": ["node_modules", "dist"]
+
 }
