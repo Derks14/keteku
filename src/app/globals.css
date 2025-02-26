@@ -1,6 +1,217 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-collapsible-down: collapsible-down 0.5s ease-out;
+  --animate-collapsible-up: collapsible-up 0.5s ease-out;
+  --animate-blob: blob 7s infinite linear;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes collapsible-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-collapsible-content-height);
+    }
+  }
+  @keyframes collapsible-up {
+    from {
+      height: var(--radix-collapsible-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -80px) scale(1.4);
+    }
+    66% {
+      transform: translate(-50px, 20px) scale(1.2);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility some-custom-component-class {
+  /* put all the classes after the @apply keyword */
+  @apply m-10 delay-75 border-l;
+}
+
+@utility floating-ball {
+  @apply absolute top-48 h-64 w-64 rounded-full animate-blob opacity-40 mix-blend-multiply blur-2xl dark:top-72 dark:h-36 dark:w-36 dark:opacity-90 dark:mix-blend-hard-light dark:blur-[90px];
+}
+
+@utility animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+@utility animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@utility bg-custom-radial {
+  background: radial-gradient(
+    600px at var(--mouse-x) var(--mouse-y),
+    rgba(0, 0, 0, 0.25),
+    transparent 40%
+  );
+
+  @media (prefers-color-scheme: dark) {
+    background: radial-gradient(
+      500px at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.15),
+      transparent 40%
+    );
+  }
+}
+
+@utility bg-custom-card-border {
+  background: radial-gradient(
+    350px at var(--mouse-x) var(--mouse-y),
+    rgba(120, 120, 120, 0.03),
+    transparent 40%
+  );
+}
+
+@utility card-content {
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  margin: 1px;
+  height: calc(100% - 2px);
+  width: calc(100% - 2px);
+  border-radius: inherit;
+
+  @media (prefers-color-scheme: dark) {
+    border-radius: inherit;
+  }
+}
+
+@utility open-hamburger {
+  transform: rotate(90deg);
+
+  & .hamburger-top {
+    transform: rotate(45deg) translateY(3px) translateX(1px);
+  }
+
+  & .hamburger-middle {
+    display: none;
+  }
+
+  & .hamburger-bottom {
+    transform: rotate(-45deg) translateY(-3px) translateX(1px);
+  }
+}
+
+@utility hamburger-top {
+  .open-hamburger & {
+    transform: rotate(45deg) translateY(3px) translateX(1px);
+  }
+}
+
+@utility hamburger-middle {
+  .open-hamburger & {
+    display: none;
+  }
+}
+
+@utility hamburger-bottom {
+  .open-hamburger & {
+    transform: rotate(-45deg) translateY(-3px) translateX(1px);
+  }
+}
 
 @layer base {
   :root {
@@ -88,80 +299,3 @@
       rgb(var(--background-start-rgb));
   }
 }
-
-@layer components {
-  .some-custom-component-class {
-    /* put all the classes after the @apply keyword */
-    @apply m-10 delay-75 border-l;
-  }
-
-  .floating-ball {
-    @apply absolute top-48 h-64 w-64 rounded-full animate-blob opacity-40 mix-blend-multiply blur-2xl dark:top-72 dark:h-36 dark:w-36 dark:opacity-90 dark:mix-blend-hard-light dark:blur-[90px];
-  }
-
-}
-
-@layer utilities {
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-
-  .bg-custom-radial {
-    background: radial-gradient(
-            600px at var(--mouse-x) var(--mouse-y),
-            rgba(0, 0, 0, 0.25),
-            transparent 40%);
-  }
-
-  .bg-custom-card-border {
-    background: radial-gradient(
-            350px at var(--mouse-x) var(--mouse-y),
-            rgba(120, 120, 120, 0.03),
-            transparent 40%);
-  }
-
-  .card-content {
-    background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
-    rgb(var(--background-start-rgb));
-    margin: 1px;
-    height: calc(100% - 2px);
-    width: calc(100% - 2px);
-    border-radius: inherit;
-  }
-
-  .open-hamburger {
-    transform: rotate(90deg);
-  }
-
-
-  .open-hamburger .hamburger-top {
-    transform: rotate(45deg) translateY(3px) translateX(1px);
-  }
-
-  .open-hamburger .hamburger-middle {
-    display: none;
-  }
-
-  .open-hamburger .hamburger-bottom {
-    transform: rotate(-45deg) translateY(-3px) translateX(1px);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .bg-custom-radial {
-      background: radial-gradient(
-              500px at var(--mouse-x) var(--mouse-y),
-              rgba(255,255,255, 0.15),
-              transparent 40%);
-    }
-
-    .card-content {
-      border-radius: inherit;
-
-    }
-
-  }
-
-  }
