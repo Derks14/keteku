@@ -9,7 +9,7 @@ export default function Footer() {
             {/*<Signature />*/}
           </div>
           <div>
-            <p> ©2024 Derrick Keteku Built with ❤️ by yours truly.</p>
+            <p><span className="mr-2">©2024 Derrick Keteku. </span>  Built with ❤️ by yours truly.</p>
           </div>
         </div>
       </div>

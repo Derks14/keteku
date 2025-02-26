@@ -34,7 +34,7 @@ const About = () => {
         <Card>SCHOOL </Card>
         <Card>WORK EXPERIENCES</Card>
         <Card className="col-span-full">
-          GET IN TOUCH NOW
+          HIT ME UP, SAY HI
         </Card>
       </Wrapper>
     </>

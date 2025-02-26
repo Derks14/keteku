@@ -1,6 +1,3 @@
-"use client";
-
-
 import { toggleMobileNav } from "@/components/services/utils.ts";
 
 const MobileTopNav = () => {
