@@ -8,20 +8,20 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  // const checkPreviousState = () => {
-  //   return localStorage!.theme === "dark" ||
-  //     (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  //     ? "dark"
-  //     : "light";
-  // };
-  //
+  const checkPreviousState = () => {
+    return localStorage!.theme === "dark" ||
+      (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ? "dark"
+      : "light";
+  };
+
   const themeState = useState("");
   //
-  // if (themeState[0] == "dark") {
-  //   document.documentElement.classList.add("dark");
-  // } else {
-  //   document.documentElement.classList.remove("dark");
-  // }
+  if (themeState[0] == "dark") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
 
   return (
     <>
