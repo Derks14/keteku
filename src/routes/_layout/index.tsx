@@ -47,7 +47,10 @@ const Home = () => {
           <div>AI project</div>
           <div>ACCENT MODEL</div>
         </Card>
-        <Card className=""> </Card>
+        <Card className="">
+          <div>AI Project </div>
+          <div>PERFUMER RECOMMENDATIONS SYSTEM</div>
+        </Card>
         <Card className="col-span-2"> TOOLS </Card>
         <Card className=""> </Card>
       </Wrapper>

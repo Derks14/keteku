@@ -14,3 +14,8 @@ export const toggleMobileNav = () => {
   document.body.classList.toggle("overflow-hidden");
   document.body.classList.toggle("fixed");
 };
+
+
+export const toggleTheme = () => {
+
+}

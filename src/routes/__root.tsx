@@ -5,7 +5,7 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 const Core =  () => {
 
   return (
-    <div className="h-screen max-h-screen min-w-screen overflow-hidden font-medium font-dosis">
+    <div className="h-screen max-h-screen min-w-screen overflow-hidden font-medium font-dosis dark">
         <Outlet />
         <TanStackRouterDevtools />
     </div>
