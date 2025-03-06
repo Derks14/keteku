@@ -2,6 +2,8 @@
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:is(.dark *));
+
 
 @theme {
     --font-dosis: "dosis", sans-serif;
@@ -216,6 +218,41 @@
     .open-hamburger & {
         transform: rotate(-45deg) translateY(-3px) translateX(1px);
     }
+}
+
+.dark {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --muted: hsl(223, 47%, 11%);
+    --muted-foreground: hsl(215.4, 16.3%, 56.9%);
+
+
+    --accent: hsl(255, 46%, 20%);
+    --accent-foreground: hsl(210 40% 98%);
+
+    --popover: hsl(224 71% 4%);
+    --popover-foreground: hsl(215, 20.2%, 65.1%);
+
+    --border: hsl(216, 34%, 17%);
+    --input: hsl(216 34% 17%);
+
+    --card: hsl(224 71% 4%);
+    --card-foreground: hsl(213 31% 91%);
+
+    --primary: hsl(255, 46%, 50%);
+    --primary-foreground: hsl(255, 0%, 100%);
+
+    --secondary: hsl(222.2, 47.4%, 11.2%);
+    --secondary-foreground: hsl(210, 40%, 98%);
+
+    --destructive: hsl(0, 63%, 31%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+
+    --ring: hsl(216, 34%, 17%);
+
+    --radius: 0.5rem;
 }
 
 @layer base {
