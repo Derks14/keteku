@@ -3,7 +3,7 @@ import { WiSunset } from "react-icons/wi";
 import { RxMoon } from "react-icons/rx";
 import { LuLaptopMinimal } from "react-icons/lu";
 
-import { useThemeContext } from "@/components/context/theme-context.tsx";
+import { Theme, useTheme } from "@/components/context/theme-context.tsx";
 
 
 
@@ -13,11 +13,10 @@ interface TopNavProps {
 }
 
 const TopNav = ({ title }: TopNavProps) => {
-  const [theme, setTheme] = useThemeContext();
+  const [theme, setTheme] = useTheme();
 
-  const toggleTheme = () => {
-    const value = (theme + 1 ) % 3
-    setTheme(value )
+  const toggleTheme = (value: Theme) => {
+    setTheme(value)
     localStorage.theme = value
   }
   return (
@@ -29,11 +28,12 @@ const TopNav = ({ title }: TopNavProps) => {
           <h1 className="text-3xl">{title}</h1>
         </div>
         <div>
-          <button onClick={toggleTheme} className=" font-light text-primary hover:rounded-lg hover:bg-accent">
+          <button className="font-light text-primary hover:rounded-lg hover:bg-accent">
 
-            { theme == 0 && <WiSunset className="text-3xl" /> }
-            { theme == 1 && <RxMoon className="text-2xl" /> }
-            { theme == 2 && <LuLaptopMinimal className="text-2xl" />}
+            { theme == 2 && <WiSunset onClick={() => toggleTheme(1)} className="text-3xl" /> }
+            { theme == 1 && <RxMoon onClick={() => toggleTheme(2)} className="text-2xl" /> }
+            { theme == 0 && <LuLaptopMinimal onClick={ () => toggleTheme(0) } className="text-2xl" />}
+
           </button>
         </div>
       </div>
