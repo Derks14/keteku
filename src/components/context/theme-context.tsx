@@ -39,9 +39,7 @@ export const ThemeContextProvider = ({children}: ThemeProviderPropsType) => {
     if (theme === 0) {
       const system_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light';
       theme_class.add(system_theme)
-      console.log('its set to system theme');
     } else {
-      console.log('whats value ', theme);
       theme_class.add( theme === 1 ? 'light' : 'dark')
     }
 
