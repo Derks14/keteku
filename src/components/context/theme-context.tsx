@@ -31,8 +31,6 @@ export const ThemeContextProvider = ({children}: ThemeProviderPropsType) => {
   const [theme] = themeState;
 
   useEffect(()=> {
-    console.log("I just run my effect");
-
     const theme_class = window.document.documentElement.classList;
     theme_class.remove('light', 'dark')
 

@@ -1,27 +1,10 @@
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { NavLink } from "@/components/ui/nav-link";
 import { Link } from "@tanstack/react-router";
+import { navLinks } from "@/components/services/utils.ts";
 
 const Nav = () => {
-  const links: { label: string; path: string }[] = [
-    {
-      label: "Projects",
-      path: "/projects",
-    },
-    {
-      label: "About",
-      path: "/about",
-    },
-    {
-      label: "Blog",
-      path: "/blog",
-    },
-    // {
-    //   label: "Contact",
-    //   path: "/contact",
-    // },
-    // { label: "Resume", path: "/resume" },
-  ];
+
   return (
     <>
       <aside className="hidden h-full  w-32 min-w-[8rem] p-4 py-8 md:block">
@@ -33,7 +16,7 @@ const Nav = () => {
         <nav className="flex h-full flex-col items-center justify-between py-8">
           {/*one*/}
           <div className=" ">
-            {links.map((link) => (
+            {navLinks.map((link) => (
               <NavLink key={link.path} path={link.path} label={link.label} />
             ))}
           </div>

@@ -3,14 +3,24 @@ import { WiSunset } from "react-icons/wi";
 import { RxMoon } from "react-icons/rx";
 import { LuLaptopMinimal } from "react-icons/lu";
 import { Theme, useTheme } from "@/components/context/theme-context.tsx";
+import { useNavigate } from "@tanstack/react-router";
+import { navLinks, toggleMobileNav } from "@/components/services/utils.ts";
 
 
 const MobileNavigationMenu = () => {
   const [theme, setTheme] = useTheme();
+  const navigate = useNavigate()
+
   const toggleTheme = (value: Theme) => {
     setTheme(value)
     localStorage.theme = value
   }
+
+  const navigateToPage = async (value: string) => {
+    toggleMobileNav()
+    await navigate({ to: value })
+  }
+
   return (
     <>
       <section
@@ -19,21 +29,14 @@ const MobileNavigationMenu = () => {
       >
         <div className="h-screen bg-white/30 p-6 backdrop-blur-md dark:bg-black/70 ">
           <div className="flex h-[90%] flex-col  justify-between pt-16">
-            <div></div>
             <div className="cursor-pointer">
-              <div className="py-6 text-center">
-                <a className="text-2xl">Projects</a>
-              </div>
-              <div className="py-6 text-center">
-                <a>
-                  <h2 className="text-2xl">About</h2>
+
+              { navLinks.map( (link) => (
+                <a key={link.path} onClick={ () => navigateToPage(link.path) } className="text-center">
+                  <div className="py-6"><h2 className="text-2xl">{link.label}</h2></div>
                 </a>
-              </div>
-              <div className="py-6 text-center">
-                <a>
-                  <h2 className="text-2xl">Contact</h2>
-                </a>
-              </div>
+              ))}
+
             </div>
             {/*lower part of the navigation menu*/}
             <div>
