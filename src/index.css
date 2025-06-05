@@ -56,6 +56,19 @@
     );
 
     --animate-blob: blob 7s infinite linear;
+    --animate-signature: signature 20s ease-in-out infinite;
+
+    @keyframes signature {
+        0% {
+            stroke-dashoffset: 3000px;
+        }
+        50% {
+            stroke-dashoffset: 0;
+        }
+        100% {
+            stroke-dashoffset: 3000px;
+        }
+    }
 
     @keyframes blob {
         0% {

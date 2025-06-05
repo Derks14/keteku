@@ -9,7 +9,7 @@ interface CardProps {
 
 const Card = ({ children, className }: CardProps) => {
   // function to handle cursor movement
-  const onMouseMove = (e: MouseEvent | any) => {
+  const onMouseMove = (e: MouseEvent | any ) => {
     const { currentTarget, clientX, clientY } = e;
     const { left, top } = currentTarget.getBoundingClientRect();
     const mouseX: number = clientX - left;
@@ -33,10 +33,7 @@ const Card = ({ children, className }: CardProps) => {
         className,
       )}
     >
-      <div className="flex h-full flex-col-reverse p-4 md:p-6">
-        <div>{children}</div>
-        <div> </div>
-      </div>
+      { children }
     </div>
   );
 };

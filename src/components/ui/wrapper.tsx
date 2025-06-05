@@ -5,7 +5,7 @@ import { cn } from "@/components/services/utils.ts";
 
 interface wrapper_props {
   children: ReactNode;
-  page: string;
+  page?: string;
   row_cols_class: string;
 }
 
