@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
 import Card from "@/components/ui/card.tsx";
-import Wrapper from "@/components/ui/wrapper.tsx";
 
 
 export const Route = createFileRoute('/_layout/detail')({
@@ -10,7 +9,14 @@ export const Route = createFileRoute('/_layout/detail')({
 function RouteComponent() {
   return (
     <>
-      <Wrapper row_cols_class="md:grid-cols-1 md:grid-rows-1">
+      <div>
+        <div>
+          <div>This title should be quite big</div>
+          <div>Description with bolder and larger text compared to the title and the link to the project down below
+          It should be quite lengthy
+          </div>
+          <div>this can be normal text or slightly bigger</div>
+        </div>
         <Card>
           <div className="flex-col flex">
             <div>one</div>
@@ -19,7 +25,7 @@ function RouteComponent() {
             <div></div>
           </div>
         </Card>
-      </Wrapper>
+      </div>
     </>
   )
 }
