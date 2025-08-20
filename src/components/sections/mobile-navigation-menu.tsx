@@ -2,9 +2,10 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { WiSunset } from "react-icons/wi";
 import { RxMoon } from "react-icons/rx";
 import { LuLaptopMinimal } from "react-icons/lu";
-import { Theme, useTheme } from "@/components/context/theme-context.tsx";
+import { Theme } from "@/components/context/theme-context.tsx";
 import { useNavigate } from "@tanstack/react-router";
 import { navLinks, toggleMobileNav } from "@/components/services/utils.ts";
+import { useTheme } from "@/components/context/hooks.ts";
 
 
 const MobileNavigationMenu = () => {

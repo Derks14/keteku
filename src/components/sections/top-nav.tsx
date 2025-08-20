@@ -3,8 +3,9 @@ import MobileTopNav from "@/components/sections/mobile-top-nav";
 import { RxMoon } from "react-icons/rx";
 import { LuLaptopMinimal } from "react-icons/lu";
 
-import { Theme, useTheme } from "@/components/context/theme-context.tsx";
+import { Theme } from "@/components/context/theme-context.tsx";
 import { GiUbisoftSun } from "react-icons/gi";
+import { useTheme } from "@/components/context/hooks.ts";
 
 
 

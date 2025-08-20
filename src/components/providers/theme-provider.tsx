@@ -1,28 +1,15 @@
 "use client";
 
 import { ReactNode, useState } from "react";
-import { ThemeContext } from "../context/theme-context";
+import { Theme, ThemeContext } from "@/components/context/theme-context.tsx";
+
 
 interface ThemeProviderProps {
   children: ReactNode;
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  // const checkPreviousState = () => {
-  //   return localStorage!.theme === "dark" ||
-  //     (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  //     ? "dark"
-  //     : "light";
-  // };
-
-  const themeState = useState(0);
-  // //
-  // if (themeState[0] == "dark") {
-  //   document.documentElement.classList.add("dark");
-  // } else {
-  //   document.documentElement.classList.remove("dark");
-  // }
-
+  const themeState = useState<Theme>(0);
   return (
     <>
       <ThemeContext.Provider value={themeState}>{children}</ThemeContext.Provider>
