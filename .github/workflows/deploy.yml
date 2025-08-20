@@ -1,0 +1,40 @@
+name: keteku.dev
+
+on:
+  push:
+    branches: [ arcane]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+#        1. checkout the code from the repository
+      - name: checkout code
+        uses: actions/checkout@v4
+
+#        set up node.js environment
+      - name: setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: install dependencies
+        run: npm ci # uses the package-lock.json for the exact reproducible installs
+
+#        build the project
+      - name: build project
+        run: npm run build
+
+#        configure aws credentials
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: $ {{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-southeast-2
+
+      - name: deploy to s3
+        run: |
+          aws s3 sync ./dist/ s3://keteku.dev/ --delete
+#          remove files in s3 that are no longer in the local dist folder
