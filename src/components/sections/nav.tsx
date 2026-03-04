@@ -1,7 +1,7 @@
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { NavLink } from "@/components/ui/nav-link";
 import { Link } from "@tanstack/react-router";
-import { navLinks } from "@/components/services/utils.ts";
+import { navLinks } from "@/components/lib/utils.ts";
 
 const Nav = () => {
 

@@ -17,6 +17,9 @@ import { Route as LayoutProjectsImport } from './routes/_layout/projects'
 import { Route as LayoutDetailImport } from './routes/_layout/detail'
 import { Route as LayoutBlogImport } from './routes/_layout/blog'
 import { Route as LayoutAboutImport } from './routes/_layout/about'
+import { Route as LayoutProjectsAddImport } from './routes/_layout/projects_.add'
+import { Route as LayoutProjectsIdImport } from './routes/_layout/projects_.$id'
+import { Route as LayoutProjectsUpdateIdImport } from './routes/_layout/projects_.update.$id'
 
 // Create/Update Routes
 
@@ -52,6 +55,24 @@ const LayoutBlogRoute = LayoutBlogImport.update({
 const LayoutAboutRoute = LayoutAboutImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutProjectsAddRoute = LayoutProjectsAddImport.update({
+  id: '/projects_/add',
+  path: '/projects/add',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutProjectsIdRoute = LayoutProjectsIdImport.update({
+  id: '/projects_/$id',
+  path: '/projects/$id',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutProjectsUpdateIdRoute = LayoutProjectsUpdateIdImport.update({
+  id: '/projects_/update/$id',
+  path: '/projects/update/$id',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -101,6 +122,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutIndexImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/projects_/$id': {
+      id: '/_layout/projects_/$id'
+      path: '/projects/$id'
+      fullPath: '/projects/$id'
+      preLoaderRoute: typeof LayoutProjectsIdImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/projects_/add': {
+      id: '/_layout/projects_/add'
+      path: '/projects/add'
+      fullPath: '/projects/add'
+      preLoaderRoute: typeof LayoutProjectsAddImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/projects_/update/$id': {
+      id: '/_layout/projects_/update/$id'
+      path: '/projects/update/$id'
+      fullPath: '/projects/update/$id'
+      preLoaderRoute: typeof LayoutProjectsUpdateIdImport
+      parentRoute: typeof LayoutImport
+    }
   }
 }
 
@@ -112,6 +154,9 @@ interface LayoutRouteChildren {
   LayoutDetailRoute: typeof LayoutDetailRoute
   LayoutProjectsRoute: typeof LayoutProjectsRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
+  LayoutProjectsIdRoute: typeof LayoutProjectsIdRoute
+  LayoutProjectsAddRoute: typeof LayoutProjectsAddRoute
+  LayoutProjectsUpdateIdRoute: typeof LayoutProjectsUpdateIdRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
@@ -120,6 +165,9 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutDetailRoute: LayoutDetailRoute,
   LayoutProjectsRoute: LayoutProjectsRoute,
   LayoutIndexRoute: LayoutIndexRoute,
+  LayoutProjectsIdRoute: LayoutProjectsIdRoute,
+  LayoutProjectsAddRoute: LayoutProjectsAddRoute,
+  LayoutProjectsUpdateIdRoute: LayoutProjectsUpdateIdRoute,
 }
 
 const LayoutRouteWithChildren =
@@ -132,6 +180,9 @@ export interface FileRoutesByFullPath {
   '/detail': typeof LayoutDetailRoute
   '/projects': typeof LayoutProjectsRoute
   '/': typeof LayoutIndexRoute
+  '/projects/$id': typeof LayoutProjectsIdRoute
+  '/projects/add': typeof LayoutProjectsAddRoute
+  '/projects/update/$id': typeof LayoutProjectsUpdateIdRoute
 }
 
 export interface FileRoutesByTo {
@@ -140,6 +191,9 @@ export interface FileRoutesByTo {
   '/detail': typeof LayoutDetailRoute
   '/projects': typeof LayoutProjectsRoute
   '/': typeof LayoutIndexRoute
+  '/projects/$id': typeof LayoutProjectsIdRoute
+  '/projects/add': typeof LayoutProjectsAddRoute
+  '/projects/update/$id': typeof LayoutProjectsUpdateIdRoute
 }
 
 export interface FileRoutesById {
@@ -150,13 +204,33 @@ export interface FileRoutesById {
   '/_layout/detail': typeof LayoutDetailRoute
   '/_layout/projects': typeof LayoutProjectsRoute
   '/_layout/': typeof LayoutIndexRoute
+  '/_layout/projects_/$id': typeof LayoutProjectsIdRoute
+  '/_layout/projects_/add': typeof LayoutProjectsAddRoute
+  '/_layout/projects_/update/$id': typeof LayoutProjectsUpdateIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '' | '/about' | '/blog' | '/detail' | '/projects' | '/'
+  fullPaths:
+    | ''
+    | '/about'
+    | '/blog'
+    | '/detail'
+    | '/projects'
+    | '/'
+    | '/projects/$id'
+    | '/projects/add'
+    | '/projects/update/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/about' | '/blog' | '/detail' | '/projects' | '/'
+  to:
+    | '/about'
+    | '/blog'
+    | '/detail'
+    | '/projects'
+    | '/'
+    | '/projects/$id'
+    | '/projects/add'
+    | '/projects/update/$id'
   id:
     | '__root__'
     | '/_layout'
@@ -165,6 +239,9 @@ export interface FileRouteTypes {
     | '/_layout/detail'
     | '/_layout/projects'
     | '/_layout/'
+    | '/_layout/projects_/$id'
+    | '/_layout/projects_/add'
+    | '/_layout/projects_/update/$id'
   fileRoutesById: FileRoutesById
 }
 
@@ -196,7 +273,10 @@ export const routeTree = rootRoute
         "/_layout/blog",
         "/_layout/detail",
         "/_layout/projects",
-        "/_layout/"
+        "/_layout/",
+        "/_layout/projects_/$id",
+        "/_layout/projects_/add",
+        "/_layout/projects_/update/$id"
       ]
     },
     "/_layout/about": {
@@ -217,6 +297,18 @@ export const routeTree = rootRoute
     },
     "/_layout/": {
       "filePath": "_layout/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/projects_/$id": {
+      "filePath": "_layout/projects_.$id.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/projects_/add": {
+      "filePath": "_layout/projects_.add.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/projects_/update/$id": {
+      "filePath": "_layout/projects_.update.$id.tsx",
       "parent": "/_layout"
     }
   }

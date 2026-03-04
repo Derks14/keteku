@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { cn } from "@/components/services/utils.ts";
+import { cn } from "@/components/lib/utils.ts";
 import Card from "@/components/ui/card.tsx";
 import Wrapper from "@/components/ui/wrapper.tsx";
 import { DisplayCard } from "@/components/ui/display_card.tsx";

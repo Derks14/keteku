@@ -1,4 +1,4 @@
-import { toggleMobileNav } from "@/components/services/utils.ts";
+import { toggleMobileNav } from "@/components/lib/utils.ts";
 import { useNavigate } from "@tanstack/react-router";
 
 const MobileTopNav = () => {

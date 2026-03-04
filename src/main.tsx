@@ -6,10 +6,16 @@ import './index.css'
 // import the generated route tree
 import { routeTree} from "./routeTree.gen.ts";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
+import { queryClient } from "@/services/queryClient.ts";
 
 
 // create a new router instance
-const router = createRouter({ routeTree })
+const router = createRouter({
+  routeTree,
+  context: {
+    queryClient
+  }
+})
 
 // register the router instance for type safety
 declare module '@tanstack/react-router' {

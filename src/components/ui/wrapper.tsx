@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import TopNav from "@/components/sections/top-nav.tsx";
-import { cn } from "@/components/services/utils.ts";
+import { cn } from "@/components/lib/utils.ts";
 
 
 interface wrapper_props {
