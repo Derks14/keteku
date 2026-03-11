@@ -14,13 +14,16 @@ export const ProjectService = {
     });
     return http_client.get(`projects`, { params: Object.fromEntries(formData)})
   },
-  getProject: (projectId: string) => {
+  getProject: (projectId: string): Promise<ApiResponse<Project>> => {
     return http_client.get(`projects/${projectId}`);
   },
-  addProject: (payload: AddProjectPayload) => {
+  updateProject: ({ projectId, project }: {projectId: string, project: Partial<Project>}): Promise<ApiResponse<Project>> => {
+    return http_client.put(`projects/${projectId}`, project)
+  },
+  addProject: (payload: AddProjectPayload): Promise<ApiResponse<Project>> => {
     return http_client.post(`projects`, payload);
   },
   deleteProject: (projectId: string): Promise<ApiResponse<unknown>> => {
-    return http_client.delete()
+    return http_client.delete(`projects/${projectId}`)
   }
 }

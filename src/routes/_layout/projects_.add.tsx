@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 import Wrapper from "@/components/ui/wrapper.tsx";
 import Card from "@/components/ui/card.tsx";
 import { DisplayCard } from "@/components/ui/display_card.tsx";
@@ -21,16 +21,26 @@ export const Route = createFileRoute('/_layout/projects_/add')({
 
 function RouteComponent() {
 
+  const navigate =  Route.useNavigate()
+
   const { mutate, isPending } = useMutation({
     mutationFn: ProjectService.addProject,
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       toast.success("New Draft Project Added", {
         description: "",
         action: {
           label: "OK",
-          onClick: () => console.log(data)
-        }
-      })
+          onClick: () => console.log(data),
+        },
+      });
+
+      // navigate to the update screen
+
+      await navigate({
+        to: "/projects/update/$id",
+        params: { id: data.data.id },
+      });
+
 
     },
     onError: (error) => {
@@ -38,11 +48,11 @@ function RouteComponent() {
         description: new Date().toUTCString(),
         action: {
           label: "OK",
-          onClick: () => console.log(error)
-        }
-      })
-    }
-  })
+          onClick: () => console.log(error),
+        },
+      });
+    },
+  });
 
   const { register, watch, handleSubmit, formState: { errors }} = useForm<ProjectValidationSchema>({
     resolver: zodResolver(project_validation_schema)
