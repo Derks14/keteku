@@ -1,46 +1,67 @@
-import { createContext, SetStateAction, Dispatch, useState, ReactNode, useEffect } from "react";
 
-// types
-export type Theme = 0 | 1 | 2
-export type ThemeContextType = [ Theme, Dispatch<SetStateAction<Theme>>]
-export type ThemeProviderPropsType = { children: ReactNode }
+import { createContext, ReactNode } from "react";
 
+export type Theme = "dark" | "light" | "system"
+export type ResolvedTheme = "dark" | "light"
 
-export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-
-
-export const ThemeContextProvider = ({children}: ThemeProviderPropsType) => {
-
-  const themeState = useState<Theme>(
-    () => ( localStorage.theme as Theme) || 0,
-  );
-  const [theme] = themeState;
-
-  useEffect(()=> {
-    const theme_class = window.document.documentElement.classList;
-    theme_class.remove('light', 'dark')
-
-    if (theme === 0) {
-      const system_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light';
-      theme_class.add(system_theme)
-    } else {
-      theme_class.add( theme === 1 ? 'light' : 'dark')
-    }
-
-  }, [theme] )
-
-
-
-
-  return (
-    <>
-      <ThemeContext.Provider value={themeState}>
-        {children}
-      </ThemeContext.Provider>
-    </>
-  )
+export type ThemeProviderProps= {
+  children: ReactNode,
+  defaultTheme?: Theme
+  storageKey?: string
+  disableTransitionOnChange?: boolean
 }
 
+export type ThemeProviderState = {
+  theme: Theme
+  setTheme: (theme: Theme) => void
+}
+
+export const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)"
+export const THEME_VALUES: Theme[] = ["dark", "light", "system"]
+
+export const ThemeProviderContext = createContext<ThemeProviderState | undefined>(undefined)
 
 
+export function isTheme(value: string | null): value is Theme {
+  return (value === null) ? false : THEME_VALUES.includes(value as Theme)
+}
+
+export function getSystemTheme(): ResolvedTheme {
+  return window.matchMedia(COLOR_SCHEME_QUERY).matches ? "dark" : "light";
+}
+
+export const disableTransitionsTemporarily = () => {
+  const style = document.createElement("style")
+  style.appendChild(
+    document.createTextNode(
+      "*,*::before,*::after{-webkit-transition:none!important;transition:none!important}"
+    )
+  )
+  document.head.appendChild(style)
+  return () => {
+    window.getComputedStyle(document.body)
+    requestAnimationFrame( ()=> {
+      requestAnimationFrame(() => {
+        style.remove()
+      })
+    })
+  }
+}
+
+export function isEditableTarget(target: EventTarget | null) {
+  if(!(target instanceof HTMLElement)) {
+    return false
+  }
+
+  if (target.isContentEditable) {
+    return true
+  }
+
+  const editableParent = target.closest(
+    "input, textarea, select, [contenteditable='true']"
+  )
+
+  if (editableParent) { return true }
+
+  return false
+}

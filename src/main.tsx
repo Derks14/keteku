@@ -7,6 +7,7 @@ import './index.css'
 import { routeTree} from "./routeTree.gen.ts";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { queryClient } from "@/services/queryClient.ts";
+import { ThemeProvider } from "@/components/providers/theme-provider.tsx";
 
 
 // create a new router instance
@@ -27,6 +28,8 @@ declare module '@tanstack/react-router' {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>,
 )

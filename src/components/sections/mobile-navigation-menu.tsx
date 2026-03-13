@@ -1,21 +1,21 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { WiSunset } from "react-icons/wi";
-import { RxMoon } from "react-icons/rx";
-import { LuLaptopMinimal } from "react-icons/lu";
-import { Theme } from "@/components/context/theme-context.tsx";
+// import { WiSunset } from "react-icons/wi";
+// import { RxMoon } from "react-icons/rx";
+// import { LuLaptopMinimal } from "react-icons/lu";
+// import { Theme } from "@/components/context/theme-context.tsx";
 import { useNavigate } from "@tanstack/react-router";
 import { navLinks, toggleMobileNav } from "@/components/lib/utils.ts";
-import { useTheme } from "@/components/context/hooks.ts";
+// import { useTheme } from "@/components/providers/theme-provider.tsx";
 
 
 const MobileNavigationMenu = () => {
-  const [theme, setTheme] = useTheme();
+  // const [theme, setTheme] = useTheme();
   const navigate = useNavigate()
 
-  const toggleTheme = (value: Theme) => {
-    setTheme(value)
-    localStorage.theme = value
-  }
+  // const toggleTheme = (value: Theme) => {
+  //   // setTheme(value)
+  //   localStorage.theme = value
+  // }
 
   const navigateToPage = async (value: string) => {
     toggleMobileNav()
@@ -57,9 +57,9 @@ const MobileNavigationMenu = () => {
                 <div>
                   <button className="font-light text-primary hover:rounded-lg hover:bg-accent">
 
-                    { theme == 2 && <WiSunset onClick={() => toggleTheme(1)} className="text-3xl" /> }
-                    { theme == 1 && <RxMoon onClick={() => toggleTheme(2)} className="text-2xl" /> }
-                    { theme == 0 && <LuLaptopMinimal onClick={ () => toggleTheme(0) } className="text-2xl" />}
+                    {/*{ theme == 2 && <WiSunset onClick={() => toggleTheme("light")} className="text-3xl" /> }*/}
+                    {/*{ theme == 1 && <RxMoon onClick={() => toggleTheme("dark")} className="text-2xl" /> }*/}
+                    {/*{ theme == 0 && <LuLaptopMinimal onClick={ () => toggleTheme("system") } className="text-2xl" />}*/}
 
                   </button>
                 </div>
