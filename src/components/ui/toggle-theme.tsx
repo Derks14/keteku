@@ -1,38 +1,46 @@
 
-import { BsSun } from "react-icons/bs";
-// import { useContext } from "react";
-// import { ThemeContext } from "@/components/context/theme-context";
+import { useTheme } from "@/components/hooks/use-theme.ts";
+import { getSystemTheme } from "@/components/context/theme-context.tsx";
+import { LaptopMinimal, Moon, Sun } from "lucide-react";
+
 
 const ToggleTheme = () => {
-  // const [theme, setTheme] = useContext(ThemeContext);
+
+  const { theme, setTheme } = useTheme()
   const toggleTheme = () => {
-  //   let currentTheme = theme;
-  //   switch (currentTheme) {
-  //     case "light":
-  //       currentTheme = "dark";
-  //       console.log("dark");
-  //       break;
-  //     case "dark":
-  //       currentTheme = "system";
-  //       console.log("system");
-  //       break;
-  //     default:
-  //       currentTheme = "light";
-  //       console.log("light");
-  //   }
-  //   setTheme(currentTheme);
+    const nextTheme = theme === "dark" ? "light"
+      : theme === "light" ? "dark"
+        : getSystemTheme() === "dark" ? "light" : "dark"
+
+    localStorage.setItem("theme", nextTheme)
+    setTheme(nextTheme)
   };
 
   return (
     <>
       <div>
-        <button
-          onClick={toggleTheme}
-          className="p-2 text-3xl text-primary hover:rounded-lg hover:bg-accent"
-        >
-          <BsSun />
+
+        <button onClick={toggleTheme} className="hover:bg-muted px-3 py-1.5 rounded-lg cursor-pointer">
+          {
+          theme === "system" ? (<span>
+            <LaptopMinimal size={40} strokeWidth={1} />
+          </span>) : (
+            <div>
+              {theme === "dark" ? (
+                <span>
+                <Sun  color="#ffeb14" strokeWidth={1} size={32} />
+              </span>
+              ) : (
+                <span>
+                  <Moon strokeWidth={1} color="#39AAAA" size={32} />
+                </span>
+              )}
+            </div>
+          )
+        }
         </button>
       </div>
+
     </>
   );
 };

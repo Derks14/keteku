@@ -66,7 +66,7 @@ export function ThemeProvider({
 
       if (isEditableTarget(event.target)) return;
 
-      if (event.key.toLocaleLowerCase() !== "d") return;
+      if (event.key.toLocaleLowerCase() !== "s") return;
 
       setThemeState( (currentTheme) => {
         const nextTheme = currentTheme === "dark" ? "light"

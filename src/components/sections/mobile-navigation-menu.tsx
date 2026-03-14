@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 // import { Theme } from "@/components/context/theme-context.tsx";
 import { useNavigate } from "@tanstack/react-router";
 import { navLinks, toggleMobileNav } from "@/components/lib/utils.ts";
+import ToggleTheme from "@/components/ui/toggle-theme.tsx";
 // import { useTheme } from "@/components/providers/theme-provider.tsx";
 
 
@@ -55,13 +56,7 @@ const MobileNavigationMenu = () => {
                   </div>
                 </div>
                 <div>
-                  <button className="font-light text-primary hover:rounded-lg hover:bg-accent">
-
-                    {/*{ theme == 2 && <WiSunset onClick={() => toggleTheme("light")} className="text-3xl" /> }*/}
-                    {/*{ theme == 1 && <RxMoon onClick={() => toggleTheme("dark")} className="text-2xl" /> }*/}
-                    {/*{ theme == 0 && <LuLaptopMinimal onClick={ () => toggleTheme("system") } className="text-2xl" />}*/}
-
-                  </button>
+                  <ToggleTheme />
                 </div>
               </div>
             </div>
