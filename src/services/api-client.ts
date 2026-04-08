@@ -49,23 +49,15 @@ http_client.interceptors.response.use(
   },
 
   (error) => {
-    const { code } = error;
 
-    console.log("this is a network error");
-
-    if (code === "ERR_NETWORK") {
+    if (error.code === "ERR_NETWORK") {
       console.error("NETWORK ERROR")
-      console.error("CANT REACH SERVER CURRENTLY");
       return Promise.reject(error);
-
-    } else {
-
-      const { response: { data },  } = error;
-      console.error(data)
-      return Promise.reject(data)
-
     }
 
+    // forward the problem detail body to the callers
+    const problemDetail = error.response?.data ?? error;
+    return Promise.reject(problemDetail);
   }
 );
 

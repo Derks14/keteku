@@ -10,10 +10,10 @@ export const project_validation_schema = object({
 
 export const update_project_validation_schema = object({
   category: z.enum(Category),
-  title: string().min(1, { message: "project title is required" }),
-  description: string().min(1, { message: "project description is required" }),
+  title: string(),
+  description: string(),
   tags: z.array(string()),
-  icon: string().min(1, { message: "project icon is required" }),
+  icon: string(),
   status: z.enum(CopyStatus),
   hero: object({
     projectName: string().min(1, { message: "project name is required" }),
@@ -25,20 +25,20 @@ export const update_project_validation_schema = object({
     }),
   }),
   problemStatement: object({
-    problem: string().min(1, { message: "problem is required" }),
-    realWorldMotivation: string().min(1, { message: "real world motivation is required" }),
+    problem: string(),
+    realWorldMotivation: string(),
     constraints: z.array(string()),
     whyExistingSolutionsFailed: z.array(string()),
   }),
   systemArchitecture: object({
     diagramUrl: url({ message: "diagram URL must be a valid URL" }),
     dataFlow: z.array(string()),
-    designRationale: string().min(1, { message: "design rationale is required" }),
+    designRationale: string(),
   }),
   engineeringDecision: z.array(object({
-    topic: string().min(1, { message: "topic is required" }),
-    decision: string().min(1, { message: "decision is required" }),
-    reason: string().min(1, { message: "reason is required" }),
+    topic: string(),
+    decision: string(),
+    reason: string(),
   })),
   implementationHighlights: object({
     apiDesign: z.array(string()),

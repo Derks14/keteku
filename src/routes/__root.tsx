@@ -2,6 +2,7 @@ import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import { Toaster } from "@/components/ui/sonner.tsx";
 import { KetekuRouterContext } from "@/services/queryClient.ts";
+import { Button } from "@/components/ui/button.tsx";
 
 
 const Core =  () => {
@@ -17,6 +18,16 @@ const Core =  () => {
   )
 
 }
+
+const NotFound = () => {
+  return (
+    <div>
+      <h1>Heyyy, looks like you're lost mate</h1>
+      <Button variant="link">lets go back home</Button>
+    </div>
+  )
+}
 export const Route = createRootRouteWithContext<KetekuRouterContext>()({
+  notFoundComponent: NotFound,
   component: Core
 })

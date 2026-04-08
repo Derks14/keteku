@@ -7,6 +7,7 @@ import { LaptopMinimal, Moon, Sun } from "lucide-react";
 const ToggleTheme = () => {
 
   const { theme, setTheme } = useTheme()
+
   const toggleTheme = () => {
     const nextTheme = theme === "dark" ? "light"
       : theme === "light" ? "dark"
@@ -23,7 +24,7 @@ const ToggleTheme = () => {
         <button onClick={toggleTheme} className="hover:bg-muted px-3 py-1.5 rounded-lg cursor-pointer">
           {
           theme === "system" ? (<span>
-            <LaptopMinimal size={40} strokeWidth={1} />
+            <LaptopMinimal size={32} strokeWidth={1} />
           </span>) : (
             <div>
               {theme === "dark" ? (
