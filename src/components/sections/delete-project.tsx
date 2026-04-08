@@ -4,7 +4,6 @@ import {
   AlertDialogHeader, AlertDialogMedia, AlertDialogTitle,
   AlertDialogTrigger
 } from "@/components/ui/alert-dialog.tsx";
-import { Button } from "@/components/ui/button.tsx";
 import { Trash2Icon } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { ProjectService } from "@/services/api/project.service.ts";

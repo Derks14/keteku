@@ -108,7 +108,6 @@ function RouteComponent() {
   const {
     register,
     control,
-    resetField,
     setValue,
     watch,
     handleSubmit,

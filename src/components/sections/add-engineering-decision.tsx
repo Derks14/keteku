@@ -2,7 +2,7 @@ import {
   Control,
   FieldErrors,
   useFieldArray,
-  UseFormRegister, UseFormResetField, UseFormSetValue,
+  UseFormRegister, UseFormSetValue,
   UseFormTrigger, UseFormWatch
 } from "react-hook-form";
 import { UpdateProjectValidationSchema } from "@/components/schemas/project.schema.ts";
@@ -89,7 +89,7 @@ const AddEngineeringDecision = ({ control, register, errors, watch, trigger, set
     remove(idx)
   }
 
-  const onUpdate = (idx) => {
+  const onUpdate = (idx: number) => {
     setUpdating(true);
     setValue(`engineeringDecision.${idx}.topic`, watch(`engineeringDecision.${idx}.topic`), {
       shouldDirty: true,
