@@ -75,7 +75,7 @@ function RouteComponent() {
 
   return (
     <>
-      <Wrapper page="Projects" row_cols_class="md:grid-cols-4 md:grid-rows-3">
+      <Wrapper page="Projects" row_cols_class="md:grid-cols-3">
         {isLoading ?
           <p>loading content</p>
           :
@@ -83,7 +83,9 @@ function RouteComponent() {
           {projects.map((project) => (
             <Card className="" key={project.id}>
               <DisplayCard>
-                <div></div>
+                <div>
+                  <pre>{ JSON.stringify(project, null, 2)}</pre>
+                </div>
                 <div></div>
               </DisplayCard>
             </Card>

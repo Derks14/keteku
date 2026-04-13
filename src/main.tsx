@@ -28,7 +28,8 @@ declare module '@tanstack/react-router' {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider>
+    {/* Keep transitions alive during theme toggle so UI animations (e.g., Morph) still run */}
+    <ThemeProvider disableTransitionOnChange={false}>
       <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>,

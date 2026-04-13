@@ -1,5 +1,4 @@
 import MobileTopNav from "@/components/sections/mobile-top-nav";
-import ToggleTheme from "@/components/ui/toggle-theme.tsx";
 
 interface TopNavProps {
   title?: string;
@@ -20,9 +19,7 @@ const TopNav = ({ title }: TopNavProps) => {
 
         <div>
           <div className="flex items-center gap-2">
-
-            <ToggleTheme />
-
+            3d
           </div>
         </div>
       </div>

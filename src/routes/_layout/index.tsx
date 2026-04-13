@@ -3,6 +3,7 @@ import { cn } from "@/components/lib/utils.ts";
 import Card from "@/components/ui/card.tsx";
 import Wrapper from "@/components/ui/wrapper.tsx";
 import { DisplayCard } from "@/components/ui/display_card.tsx";
+import Morph from "@/components/ui/morph.tsx";
 
 
 
@@ -35,23 +36,12 @@ const Home = () => {
       path: ""
     },
     {
-      title: "BUILDING AND DEPLOYING PORTFOLIO",
-      span: 1,
-      project: "article",
-      path: ""
-    },
-    {
       title: "LEADING UTS AFRICAN SOCIETY",
       span: 1,
       project: "article",
       path: ""
     },
-    {
-      title: "FRAGRANCE RECOMMENDATION SYSTEM",
-      span: 1,
-      project: "article",
-      path: ""
-    },
+
     /* display card */
     {
       title: "",
@@ -60,11 +50,12 @@ const Home = () => {
       path: ""
     },
     {
-      title: "",
+      title: "FRAGRANCE RECOMMENDATION SYSTEM",
       span: 1,
-      project: "black space",
+      project: "article",
       path: ""
-    }
+    },
+
     ]
 
   return (
@@ -83,6 +74,16 @@ const Home = () => {
             </div>
           </DisplayCard>
         </Card>
+        <Card>
+          <DisplayCard>
+            <div></div>
+            <div></div>
+          </DisplayCard>
+        </Card>
+        <div>
+
+          <Morph />
+        </div>
         {/*change these hardcoded cards into list*/}
         {works.map((work) => (
           <Card className={`col-span-${work.span}`} key={work.path}>
@@ -92,6 +93,7 @@ const Home = () => {
             </DisplayCard>
           </Card>
         ))}
+
       </Wrapper>
     </>
   );
