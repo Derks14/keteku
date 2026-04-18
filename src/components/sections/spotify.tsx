@@ -34,7 +34,13 @@ const Spotify = () => {
               alt=""
             />
           </div>
-          <div>two</div>
+          <div className="leading-4">
+            <p className="font-medium">
+              <span className="mr-3">🎶</span>
+              Daily Mix 1
+            </p>
+            <p className="text-end text-sm text-muted-foreground">50 tracks</p>
+          </div>
         </div>
 
         <div>
