@@ -4,59 +4,12 @@ import Card from "@/components/ui/card.tsx";
 import Wrapper from "@/components/ui/wrapper.tsx";
 import { DisplayCard } from "@/components/ui/display_card.tsx";
 import Morph from "@/components/ui/morph.tsx";
+import Spotify from "@/components/sections/spotify.tsx";
 
 
 
 
 const Home = () => {
-
-  const works = [
-    {
-      title: "KETEKU",
-      span: 1,
-      project: "portfolio",
-      path: ""
-    },
-    {
-      title: "PRONUNCIATION IMPROVEMENT MODEL",
-      span: 1,
-      project: "ai project",
-      path: "details/1000"
-    },
-    {
-      title: "BENTSURVUCE",
-      span: 1,
-      project: "user microservice",
-      path: ""
-    },
-    {
-      title: "AWS CLOUD PRACTITIONER",
-      span: 1,
-      project: "certificate",
-      path: ""
-    },
-    {
-      title: "LEADING UTS AFRICAN SOCIETY",
-      span: 1,
-      project: "article",
-      path: ""
-    },
-
-    /* display card */
-    {
-      title: "",
-      span: 2,
-      project: "tools",
-      path: ""
-    },
-    {
-      title: "FRAGRANCE RECOMMENDATION SYSTEM",
-      span: 1,
-      project: "article",
-      path: ""
-    },
-
-    ]
 
   return (
     <>
@@ -77,22 +30,47 @@ const Home = () => {
         <Card>
           <DisplayCard>
             <div></div>
-            <div></div>
+            <div>Building Keteku here</div>
           </DisplayCard>
         </Card>
         <div>
 
           <Morph />
         </div>
+
+        <Card>
+          <div></div>
+        </Card>
+
+        <Card>
+          <div></div>
+        </Card>
+        <Card>
+          <div>one</div>
+        </Card>
+        <Card className="row-span-2">
+          <div className=" px-2 h-full"><Spotify /></div>
+        </Card>
+        <Card>
+          <div></div>
+        </Card>
+        <Card>
+          <div></div>
+        </Card>
+        <Card>
+          <div></div>
+        </Card>
+
+
         {/*change these hardcoded cards into list*/}
-        {works.map((work) => (
-          <Card className={`col-span-${work.span}`} key={work.path}>
-            <DisplayCard has_link={work.path}>
-              <div> {work.project}</div>
-              <div> {work.title}</div>
-            </DisplayCard>
-          </Card>
-        ))}
+        {/*{works.map((work) => (*/}
+        {/*  <Card className={`col-span-${work.span}`} key={work.path}>*/}
+        {/*    <DisplayCard has_link={work.path}>*/}
+        {/*      <div> {work.project}</div>*/}
+        {/*      <div> {work.title}</div>*/}
+        {/*    </DisplayCard>*/}
+        {/*  </Card>*/}
+        {/*))}*/}
 
       </Wrapper>
     </>

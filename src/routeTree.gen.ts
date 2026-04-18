@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
+import { Route as LayoutStartspotifyImport } from './routes/_layout/startspotify'
 import { Route as LayoutProjectsImport } from './routes/_layout/projects'
 import { Route as LayoutDetailImport } from './routes/_layout/detail'
 import { Route as LayoutBlogImport } from './routes/_layout/blog'
@@ -31,6 +32,12 @@ const LayoutRoute = LayoutImport.update({
 const LayoutIndexRoute = LayoutIndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutStartspotifyRoute = LayoutStartspotifyImport.update({
+  id: '/startspotify',
+  path: '/startspotify',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -115,6 +122,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutProjectsImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/startspotify': {
+      id: '/_layout/startspotify'
+      path: '/startspotify'
+      fullPath: '/startspotify'
+      preLoaderRoute: typeof LayoutStartspotifyImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/': {
       id: '/_layout/'
       path: '/'
@@ -153,6 +167,7 @@ interface LayoutRouteChildren {
   LayoutBlogRoute: typeof LayoutBlogRoute
   LayoutDetailRoute: typeof LayoutDetailRoute
   LayoutProjectsRoute: typeof LayoutProjectsRoute
+  LayoutStartspotifyRoute: typeof LayoutStartspotifyRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutProjectsIdRoute: typeof LayoutProjectsIdRoute
   LayoutProjectsAddRoute: typeof LayoutProjectsAddRoute
@@ -164,6 +179,7 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutBlogRoute: LayoutBlogRoute,
   LayoutDetailRoute: LayoutDetailRoute,
   LayoutProjectsRoute: LayoutProjectsRoute,
+  LayoutStartspotifyRoute: LayoutStartspotifyRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutProjectsIdRoute: LayoutProjectsIdRoute,
   LayoutProjectsAddRoute: LayoutProjectsAddRoute,
@@ -179,6 +195,7 @@ export interface FileRoutesByFullPath {
   '/blog': typeof LayoutBlogRoute
   '/detail': typeof LayoutDetailRoute
   '/projects': typeof LayoutProjectsRoute
+  '/startspotify': typeof LayoutStartspotifyRoute
   '/': typeof LayoutIndexRoute
   '/projects/$id': typeof LayoutProjectsIdRoute
   '/projects/add': typeof LayoutProjectsAddRoute
@@ -190,6 +207,7 @@ export interface FileRoutesByTo {
   '/blog': typeof LayoutBlogRoute
   '/detail': typeof LayoutDetailRoute
   '/projects': typeof LayoutProjectsRoute
+  '/startspotify': typeof LayoutStartspotifyRoute
   '/': typeof LayoutIndexRoute
   '/projects/$id': typeof LayoutProjectsIdRoute
   '/projects/add': typeof LayoutProjectsAddRoute
@@ -203,6 +221,7 @@ export interface FileRoutesById {
   '/_layout/blog': typeof LayoutBlogRoute
   '/_layout/detail': typeof LayoutDetailRoute
   '/_layout/projects': typeof LayoutProjectsRoute
+  '/_layout/startspotify': typeof LayoutStartspotifyRoute
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/projects_/$id': typeof LayoutProjectsIdRoute
   '/_layout/projects_/add': typeof LayoutProjectsAddRoute
@@ -217,6 +236,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/detail'
     | '/projects'
+    | '/startspotify'
     | '/'
     | '/projects/$id'
     | '/projects/add'
@@ -227,6 +247,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/detail'
     | '/projects'
+    | '/startspotify'
     | '/'
     | '/projects/$id'
     | '/projects/add'
@@ -238,6 +259,7 @@ export interface FileRouteTypes {
     | '/_layout/blog'
     | '/_layout/detail'
     | '/_layout/projects'
+    | '/_layout/startspotify'
     | '/_layout/'
     | '/_layout/projects_/$id'
     | '/_layout/projects_/add'
@@ -273,6 +295,7 @@ export const routeTree = rootRoute
         "/_layout/blog",
         "/_layout/detail",
         "/_layout/projects",
+        "/_layout/startspotify",
         "/_layout/",
         "/_layout/projects_/$id",
         "/_layout/projects_/add",
@@ -293,6 +316,10 @@ export const routeTree = rootRoute
     },
     "/_layout/projects": {
       "filePath": "_layout/projects.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/startspotify": {
+      "filePath": "_layout/startspotify.tsx",
       "parent": "/_layout"
     },
     "/_layout/": {
