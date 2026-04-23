@@ -4,12 +4,14 @@ import { QueueResponse } from "@/services/models/spotify.models.ts";
 import { get, slice } from "lodash";
 
 import { PauseIcon } from "@heroicons/react/24/solid";
+import { MdExplicit } from "react-icons/md";
 
 const Spotify = () => {
   const { isLoading, data } = useQuery({
     queryKey: ["playing"],
     queryFn: SpotifyService.queue,
-    refetchInterval: 10_000,
+    refetchInterval: 5_000,
+    // refetchIntervalInBackground: true
   });
 
   const queueResponse: QueueResponse = data?.data ?? ({} as QueueResponse);
@@ -69,11 +71,22 @@ const Spotify = () => {
               <div className=" leading-3">
                 <div>
                   <h2 className="text-lg font-semibold text-ellipsis whitespace-nowrap">
-                    {get(queueResponse, "currently_playing.name", "Best I ever had")}
+                    {get(queueResponse, "currently_playing.name", "")}
                   </h2>
-                  <p className="">
-                    {get(queueResponse, "currently_playing.artists[0].name", "Top boy")}
-                  </p>
+                  <div className="flex items-center gap-1">
+                    { get(queueResponse, "currently_playing.explicit", false) &&
+                      <div>
+                      <MdExplicit className="size-3.5" />
+                    </div>
+                    }
+
+                    <div>
+                      <p className="">
+                      {get(queueResponse, "currently_playing.artists[0].name", "")}
+                    </p>
+                    </div>
+
+                  </div>
                 </div>
                 <div>
 
@@ -105,11 +118,18 @@ const Spotify = () => {
                 <div className="flex flex-1 items-start justify-between">
                   <div>
                     <div className="font-semibold">
-                      <p className="text-ellipsis whitespace-nowrap">{get(item, "name", "Sega")}</p>
+                      <p className="text-ellipsis whitespace-nowrap">{get(item, "name", "")}</p>
                     </div>
-                    <div>
-                      <p>{get(item, "artists[0].name", "John Doe")}</p>
+                    <div className="flex items-center gap-1">
+                      <div>
+                        { get(item, "explicit", false) &&
+                          <div>
+                            <MdExplicit className="size-3.5" />
+                          </div>
+                        }
+                      </div>
 
+                      <div><p>{get(item, "artists[0].name", "")}</p></div>
                     </div>
                   </div>
 

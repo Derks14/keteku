@@ -75,22 +75,51 @@ function RouteComponent() {
 
   return (
     <>
-      <Wrapper page="Projects" row_cols_class="md:grid-cols-3">
-        {isLoading ?
-          <p>loading content</p>
-          :
-        <>
-          {projects.map((project) => (
-            <Card className="" key={project.id}>
-              <DisplayCard>
-                <div>
-                  <pre>{ JSON.stringify(project, null, 2)}</pre>
-                </div>
-                <div></div>
-              </DisplayCard>
-            </Card>
-          ))}
-        </>}
+      <Wrapper page="Projects" row_cols_class="md:grid-cols-3 md:grid-rows-6">
+        <div className="col-span-3 flex h-full flex-col-reverse">
+          <h1 className="font-bold text-7xl">Projects</h1>
+        </div>
+        <Card className="row-span-2">
+          <DisplayCard>
+            <div>Keteku</div>
+          </DisplayCard>
+        </Card>
+        <Card className="row-span-2">
+          <DisplayCard>
+            <div>Atom</div>
+          </DisplayCard>
+        </Card>
+        <Card className="row-span-2">
+          <DisplayCard>
+            <div>Pdf</div>
+          </DisplayCard>
+        </Card>
+
+        {/* Spacing*/}
+        <div className="col-span-3 flex h-full flex-col-reverse">
+          <div>
+            <h3 className="text-5xl font-bold ">Experiments</h3>
+          </div>
+        </div>
+
+        <Card>
+          <DisplayCard>
+            <div></div>
+          </DisplayCard>
+        </Card>
+        <Card>
+          <DisplayCard>
+            <div></div>
+          </DisplayCard>
+        </Card>
+        <Card>
+          <DisplayCard>
+            <div>
+              write a blog to test scenarios where you need replication and sharding
+            </div>
+          </DisplayCard>
+        </Card>
+
       </Wrapper>
     </>
   );

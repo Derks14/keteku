@@ -4,7 +4,7 @@ import Footer from "./footer.tsx";
 const Main = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <main className=" grow overflow-auto pt-8">
+      <main className=" grow overflow-auto mt-12">
         <div className="mx-auto flex h-full w-[90%] max-w-[1440px] flex-col scroll-smooth">
           <div className="relative w-full">
             <div className="floating-ball right-[36rem] bg-primary dark:bg-blue-700"></div>
@@ -20,7 +20,7 @@ const Main = ({ children }: { children: ReactNode }) => {
           </div>
 
           {/* footer */}
-          <div className="mt-8 pb-10 md:pb-4">
+          <div className=" pb-10 md:pb-4">
             <Footer />
           </div>
         </div>
