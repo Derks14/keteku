@@ -13,6 +13,7 @@
     --background-start: hsl(190, 7.89%, 85.1%);
     --background-end: hsl(0, 0%, 100%);
     /*--primary: hsl(255, 46%, 50%);*/
+    /* we will try this #5d2c0c bronze primary color */
     --primary: oklch(0.4878 0.1759 289.79);
 
     --radius: 0.625rem;
