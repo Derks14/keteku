@@ -7,7 +7,7 @@ import { PauseIcon } from "@heroicons/react/24/solid";
 import { MdExplicit } from "react-icons/md";
 
 const Spotify = () => {
-  const { isLoading, data } = useQuery({
+  const { data } = useQuery({
     queryKey: ["playing"],
     queryFn: SpotifyService.queue,
     refetchInterval: 5_000,

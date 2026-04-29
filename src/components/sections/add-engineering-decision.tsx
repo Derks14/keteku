@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input.tsx";
 import { InputDescription } from "@/components/ui/input-description.tsx";
 import { Textarea } from "@/components/ui/textarea.tsx";
 import { Button } from "@/components/ui/button.tsx";
-import React, { useState } from "react";
+import { useState, MouseEvent } from "react";
 import { toast } from "sonner";
 
 interface AddEngineeringDecisionProps {
@@ -38,7 +38,7 @@ const AddEngineeringDecision = ({ control, register, errors, watch, trigger, set
 
 
 
-  const onSubmit = async (e: Event) => {
+  const onSubmit = async (e: MouseEvent) => {
     e.preventDefault();
     // check if form fields are valid or theres something in there before you proceed
     // add empty array element
@@ -81,7 +81,7 @@ const AddEngineeringDecision = ({ control, register, errors, watch, trigger, set
 
   };
 
-  const onRemove = (event: Event, idx: number) => {
+  const onRemove = (event: MouseEvent, idx: number) => {
     event.preventDefault();
     // remove at this index and set the active index to the size of the array
     setActiveIdx(fields.length)

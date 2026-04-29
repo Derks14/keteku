@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import TopNav from "@/components/sections/top-nav.tsx";
 import { cn } from "@/components/lib/utils.ts";
 
 
@@ -9,7 +8,7 @@ interface wrapper_props {
   row_cols_class: string;
 }
 
-const wrapper = ({ children, page, row_cols_class }: wrapper_props) => {
+const wrapper = ({ children, row_cols_class }: wrapper_props) => {
   return (
     <div className="h-full w-full">
       {/*<TopNav title={page}></TopNav>*/}
