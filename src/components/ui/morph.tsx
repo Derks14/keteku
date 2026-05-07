@@ -21,7 +21,6 @@ const Morph = () => {
       <div className=" h-[16rem] flex flex-col justify-center md:justify-between ">
 
         <div className="text-end hidden md:block">
-          <p>Mood switch</p>
         </div>
         <div className="morph-toggle-container relative aspect-[2/1] w-full">
           <input

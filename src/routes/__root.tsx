@@ -1,10 +1,12 @@
-import { createRootRouteWithContext } from "@tanstack/react-router";
+import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 
 import { KetekuRouterContext } from "@/services/queryClient.ts";
 import { Button } from "@/components/ui/button.tsx";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Toaster } from "sonner";
+import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
 
 const Core =  () => {
@@ -19,6 +21,8 @@ const Core =  () => {
 
   const introTrack = useRef<HTMLDivElement | null>(null)
   const heroPanels = useRef<HTMLDivElement | null>(null)
+
+  const main = useRef<HTMLDivElement | null>(null)
 
   useGSAP(()=> {
     const d3ChildHeight = digit3.current?.firstElementChild?.clientHeight ?? 0;
@@ -96,17 +100,30 @@ const Core =  () => {
         duration: 2,
         ease: "expo.out",
         stagger: 0.1,
+        onComplete: () => {
+          gsap.set(heroPanels.current, {
+            display: "none",
+            duration: 2,
+            ease: "power1.inOut"
+          })
+        }
       }, "-=0.65")
+      .to(main.current, {
+        clipPath: "polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)",
+        duration: 5,
+        ease: "power4.inOut"
+      }, "<")
 
   })
 
   return (
     <>
-      <div className="h-screen w-full overflow-hidden text-primary font-dosis">
-        <div ref={introTrack} className="absolute inset-0 flex w-[200vw]">
+      {/* font to try mosvita */}
+      <div className="  text-primary font-dosis">
+        <div ref={introTrack} className="absolute  inset-0 flex w-[200vw]">
           <div
             ref={loader}
-            className="flex h-full w-screen shrink-0 flex-col items-center justify-between bg-gradient-to-b from-transparent to-backgroundend bg-backgroundstart p-4"
+            className="flex overflow-hidden max-h-screen h-full w-screen shrink-0 flex-col items-center justify-between bg-gradient-to-b from-transparent to-backgroundend bg-backgroundstart p-4"
           >
             <div> </div>
             <div className="counter flex h-24 tracking-tight [clip-path:polygon(0%_0%,100%_0%,_100%_100px,0_100px)] text-8xl">
@@ -166,7 +183,7 @@ const Core =  () => {
 
           <div
             ref={heroPanels}
-            className="hero-panels relative h-full w-screen shrink-0 overflow-hidden"
+            className="hero-panels max-h-screen relative h-full w-screen shrink-0 overflow-hidden"
           >
             <div className="panel absolute inset-0 h-full w-full bg-emerald-300 [clip-path:polygon(100%_0%,100%_0%,100%_100%,100%_100%)]">
               {" "}
@@ -197,6 +214,13 @@ const Core =  () => {
             </div>
             <div className="panel absolute inset-0 h-full w-full bg-blue-900 [clip-path:polygon(100%_0%,100%_0%,100%_100%,100%_100%)]">
             </div>
+          </div>
+        </div>
+        <div ref={main} className="text-foreground bg-gradient-to-b from-transparent to-backgroundend bg-backgroundstart [clip-path:polygon(100%_0%,100%_0%,100%_100%,100%_100%)]">
+          <div className="h-screen max-h-screen min-w-screen overflow-hidden   font-medium font-dosis ">
+            <Toaster />
+            <Outlet />
+            <TanStackRouterDevtools />
           </div>
         </div>
       </div>

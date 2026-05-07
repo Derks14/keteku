@@ -14,25 +14,30 @@ const Home = () => {
   return (
     <>
       <Wrapper page="Home" row_cols_class="md:grid-cols-4 md:grid-rows-3">
-        <Card className="md:col-span-2">
+        <div className="md:col-span-2">
+
           <DisplayCard>
-            <div className="flex">
+            <div className="flex justify-end items-center">
               <div className="py-2">
-                <h1 className={cn("text-5xl font-bold tracking-wide")}>Derrick Keteku.</h1>
+                <h1 className={cn("text-8xl tracking-wide font-semibold")}>Derrick Keteku</h1>
               </div>
               <div></div>
             </div>
             <div>
-              <p className="">Cloud Native Software Engineer based in Sydney</p>
+              <p className="text-2xl text-muted-foreground">Cloud Native Software Engineer based in Sydney</p>
             </div>
           </DisplayCard>
-        </Card>
-        <Card>
+        </div>
+        <div>
           <DisplayCard>
             <div></div>
-            <div>Building Keteku here</div>
+            <div>
+              <h2 className="font-bold text-2xl text-primary">
+                CURRENTLY WORKING ON
+              </h2>
+            </div>
           </DisplayCard>
-        </Card>
+        </div>
         <div>
 
           <Morph />
@@ -43,10 +48,18 @@ const Home = () => {
         </Card>
 
         <Card>
-          <div></div>
+          <div>
+
+          </div>
         </Card>
         <Card>
-          <div>one</div>
+          <DisplayCard>
+            <div></div>
+            <div>
+              <h2 className="font-medium text-2xl">GITHUB LAST COMMIT</h2>
+            </div>
+            <div></div>
+          </DisplayCard>
         </Card>
         <Card className="row-span-2">
           <div className=" px-2 h-full"><Spotify /></div>
@@ -58,7 +71,16 @@ const Home = () => {
           <div></div>
         </Card>
         <Card>
-          <div></div>
+          <a href="https://www.credly.com/badges/dd5a391c-5e1a-42d5-b2c8-602aee951370">
+            <DisplayCard>
+            <div className=" flex items-center justify-center">
+              <img className="aspect-auto h-48" src="/src/assets/aws-cp.webp" alt="aws-certified"/>
+            </div>
+            <div>
+              <h2 className="font-bold text-primary text-2xl">AWS CLOUD PRACTITIONER</h2>
+            </div>
+            <div></div>
+          </DisplayCard></a>
         </Card>
 
 
