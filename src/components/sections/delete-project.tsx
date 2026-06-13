@@ -9,16 +9,13 @@ import { useMutation } from "@tanstack/react-query";
 import { ProjectService } from "@/services/api/project.service.ts";
 import { queryClient } from "@/services/queryClient.ts";
 import { toast } from "sonner";
-import { FileRoutesByPath, UseNavigateResult } from "@tanstack/react-router";
 
 interface DeleteProjectProp {
   projectId: string;
-  navigate:  UseNavigateResult<FileRoutesByPath["/_layout/projects_/update/$id"]["fullPath"]>
-
+  navigate: (options: { to: "/projects" }) => Promise<void>;
 }
 
-const DeleteProject = ({projectId, navigate}: DeleteProjectProp) => {
-
+const DeleteProject = ({ projectId, navigate }: DeleteProjectProp) => {
   const { mutate } = useMutation({
     mutationFn: () => ProjectService.deleteProject(projectId),
     onSuccess: async (data) => {
@@ -30,27 +27,26 @@ const DeleteProject = ({projectId, navigate}: DeleteProjectProp) => {
         }
       })
 
-      await queryClient.invalidateQueries({ queryKey: ["projects"]})
+      await queryClient.invalidateQueries({ queryKey: ["projects"] });
 
       await navigate({
-        to: "/projects"
+        to: "/projects",
       });
-
     },
-    onError: error => {
+    onError: (error) => {
       toast.error("failed to delete project", {
         description: new Date().toUTCString(),
         action: {
           label: "Retry",
-          onClick: () => mutate()
-        }
-      })
+          onClick: () => mutate(),
+        },
+      });
       console.log("error deleting project project", error);
-    }
-  })
-  
+    },
+  });
+
   const deleteItem = () => mutate();
-  
+
   return (
     <>
       <AlertDialog>
@@ -75,9 +71,8 @@ const DeleteProject = ({projectId, navigate}: DeleteProjectProp) => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-
     </>
-  )
-}
+  );
+};
 
 export default DeleteProject

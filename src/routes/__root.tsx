@@ -1,23 +1,20 @@
 import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { Toaster } from "@/components/ui/sonner.tsx";
 import { KetekuRouterContext } from "@/services/queryClient.ts";
 import { Button } from "@/components/ui/button.tsx";
 
-
-const Core =  () => {
-
+const Core = () => {
   return (
-    <div className="text-foreground bg-gradient-to-b from-transparent to-backgroundend bg-backgroundstart">
-      <div className="h-screen max-h-screen min-w-screen overflow-hidden  font-medium font-dosis ">
+    <div className="text-foreground to-backgroundend bg-backgroundstart bg-gradient-to-b from-transparent">
+      <div className="font-dosis h-screen max-h-screen min-w-screen overflow-hidden text-lg font-medium">
         <Toaster />
         <Outlet />
         <TanStackRouterDevtools />
       </div>
     </div>
-  )
-
-}
+  );
+};
 
 const NotFound = () => {
   return (
@@ -25,9 +22,9 @@ const NotFound = () => {
       <h1>Heyyy, looks like you're lost mate</h1>
       <Button variant="link">lets go back home</Button>
     </div>
-  )
-}
+  );
+};
 export const Route = createRootRouteWithContext<KetekuRouterContext>()({
   notFoundComponent: NotFound,
-  component: Core
-})
+  component: Core,
+});

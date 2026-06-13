@@ -4,25 +4,26 @@ import { useTheme } from "@/components/hooks/use-theme.ts";
 
 const Morph = () => {
   const [checked, setChecked] = useState(false);
-  const { theme, setTheme } = useTheme()
-
+  const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light"
-      : theme === "light" ? "dark"
-        : getSystemTheme() === "dark" ? "light" : "dark"
+    const nextTheme =
+      theme === "dark"
+        ? "light"
+        : theme === "light"
+          ? "dark"
+          : getSystemTheme() === "dark"
+            ? "light"
+            : "dark";
 
-    localStorage.setItem("theme", nextTheme)
-    setTheme(nextTheme)
+    localStorage.setItem("theme", nextTheme);
+    setTheme(nextTheme);
   };
 
   return (
     <>
-      <div className=" h-[16rem] flex flex-col justify-center md:justify-between ">
-
-        <div className="text-end hidden md:block">
-          <p>Mood switch</p>
-        </div>
+      <div className="flex h-[16rem] flex-col justify-center md:justify-between">
+        <div className="hidden text-end md:block">{/*<p>Mood switch</p>*/}</div>
         <div className="morph-toggle-container relative aspect-[2/1] w-full">
           <input
             type="checkbox"
@@ -39,6 +40,6 @@ const Morph = () => {
       </div>
     </>
   );
-}
+};
 
 export default Morph;

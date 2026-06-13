@@ -18,9 +18,12 @@ import { Route as LayoutProjectsImport } from './routes/_layout/projects'
 import { Route as LayoutDetailImport } from './routes/_layout/detail'
 import { Route as LayoutBlogImport } from './routes/_layout/blog'
 import { Route as LayoutAboutImport } from './routes/_layout/about'
-import { Route as LayoutProjectsAddImport } from './routes/_layout/projects_.add'
-import { Route as LayoutProjectsIdImport } from './routes/_layout/projects_.$id'
-import { Route as LayoutProjectsUpdateIdImport } from './routes/_layout/projects_.update.$id'
+import { Route as LayoutProjectsKetekuImport } from './routes/_layout/projects_/keteku'
+import { Route as LayoutProjectsCraveImport } from './routes/_layout/projects_/crave'
+import { Route as LayoutProjectsAddImport } from './routes/_layout/projects_/add'
+import { Route as LayoutProjectsIdImport } from './routes/_layout/projects_/$id'
+import { Route as LayoutProjectsDetailsIndexImport } from './routes/_layout/projects_/details/index'
+import { Route as LayoutProjectsDetailsUpdateIdImport } from './routes/_layout/projects_/details/update/$id'
 
 // Create/Update Routes
 
@@ -65,6 +68,18 @@ const LayoutAboutRoute = LayoutAboutImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
+const LayoutProjectsKetekuRoute = LayoutProjectsKetekuImport.update({
+  id: '/projects_/keteku',
+  path: '/projects/keteku',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutProjectsCraveRoute = LayoutProjectsCraveImport.update({
+  id: '/projects_/crave',
+  path: '/projects/crave',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
 const LayoutProjectsAddRoute = LayoutProjectsAddImport.update({
   id: '/projects_/add',
   path: '/projects/add',
@@ -77,11 +92,20 @@ const LayoutProjectsIdRoute = LayoutProjectsIdImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
-const LayoutProjectsUpdateIdRoute = LayoutProjectsUpdateIdImport.update({
-  id: '/projects_/update/$id',
-  path: '/projects/update/$id',
-  getParentRoute: () => LayoutRoute,
-} as any)
+const LayoutProjectsDetailsIndexRoute = LayoutProjectsDetailsIndexImport.update(
+  {
+    id: '/projects_/details/',
+    path: '/projects/details/',
+    getParentRoute: () => LayoutRoute,
+  } as any,
+)
+
+const LayoutProjectsDetailsUpdateIdRoute =
+  LayoutProjectsDetailsUpdateIdImport.update({
+    id: '/projects_/details/update/$id',
+    path: '/projects/details/update/$id',
+    getParentRoute: () => LayoutRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -150,11 +174,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutProjectsAddImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/projects_/update/$id': {
-      id: '/_layout/projects_/update/$id'
-      path: '/projects/update/$id'
-      fullPath: '/projects/update/$id'
-      preLoaderRoute: typeof LayoutProjectsUpdateIdImport
+    '/_layout/projects_/crave': {
+      id: '/_layout/projects_/crave'
+      path: '/projects/crave'
+      fullPath: '/projects/crave'
+      preLoaderRoute: typeof LayoutProjectsCraveImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/projects_/keteku': {
+      id: '/_layout/projects_/keteku'
+      path: '/projects/keteku'
+      fullPath: '/projects/keteku'
+      preLoaderRoute: typeof LayoutProjectsKetekuImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/projects_/details/': {
+      id: '/_layout/projects_/details/'
+      path: '/projects/details'
+      fullPath: '/projects/details'
+      preLoaderRoute: typeof LayoutProjectsDetailsIndexImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/projects_/details/update/$id': {
+      id: '/_layout/projects_/details/update/$id'
+      path: '/projects/details/update/$id'
+      fullPath: '/projects/details/update/$id'
+      preLoaderRoute: typeof LayoutProjectsDetailsUpdateIdImport
       parentRoute: typeof LayoutImport
     }
   }
@@ -171,7 +216,10 @@ interface LayoutRouteChildren {
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutProjectsIdRoute: typeof LayoutProjectsIdRoute
   LayoutProjectsAddRoute: typeof LayoutProjectsAddRoute
-  LayoutProjectsUpdateIdRoute: typeof LayoutProjectsUpdateIdRoute
+  LayoutProjectsCraveRoute: typeof LayoutProjectsCraveRoute
+  LayoutProjectsKetekuRoute: typeof LayoutProjectsKetekuRoute
+  LayoutProjectsDetailsIndexRoute: typeof LayoutProjectsDetailsIndexRoute
+  LayoutProjectsDetailsUpdateIdRoute: typeof LayoutProjectsDetailsUpdateIdRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
@@ -183,7 +231,10 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutProjectsIdRoute: LayoutProjectsIdRoute,
   LayoutProjectsAddRoute: LayoutProjectsAddRoute,
-  LayoutProjectsUpdateIdRoute: LayoutProjectsUpdateIdRoute,
+  LayoutProjectsCraveRoute: LayoutProjectsCraveRoute,
+  LayoutProjectsKetekuRoute: LayoutProjectsKetekuRoute,
+  LayoutProjectsDetailsIndexRoute: LayoutProjectsDetailsIndexRoute,
+  LayoutProjectsDetailsUpdateIdRoute: LayoutProjectsDetailsUpdateIdRoute,
 }
 
 const LayoutRouteWithChildren =
@@ -199,7 +250,10 @@ export interface FileRoutesByFullPath {
   '/': typeof LayoutIndexRoute
   '/projects/$id': typeof LayoutProjectsIdRoute
   '/projects/add': typeof LayoutProjectsAddRoute
-  '/projects/update/$id': typeof LayoutProjectsUpdateIdRoute
+  '/projects/crave': typeof LayoutProjectsCraveRoute
+  '/projects/keteku': typeof LayoutProjectsKetekuRoute
+  '/projects/details': typeof LayoutProjectsDetailsIndexRoute
+  '/projects/details/update/$id': typeof LayoutProjectsDetailsUpdateIdRoute
 }
 
 export interface FileRoutesByTo {
@@ -211,7 +265,10 @@ export interface FileRoutesByTo {
   '/': typeof LayoutIndexRoute
   '/projects/$id': typeof LayoutProjectsIdRoute
   '/projects/add': typeof LayoutProjectsAddRoute
-  '/projects/update/$id': typeof LayoutProjectsUpdateIdRoute
+  '/projects/crave': typeof LayoutProjectsCraveRoute
+  '/projects/keteku': typeof LayoutProjectsKetekuRoute
+  '/projects/details': typeof LayoutProjectsDetailsIndexRoute
+  '/projects/details/update/$id': typeof LayoutProjectsDetailsUpdateIdRoute
 }
 
 export interface FileRoutesById {
@@ -225,7 +282,10 @@ export interface FileRoutesById {
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/projects_/$id': typeof LayoutProjectsIdRoute
   '/_layout/projects_/add': typeof LayoutProjectsAddRoute
-  '/_layout/projects_/update/$id': typeof LayoutProjectsUpdateIdRoute
+  '/_layout/projects_/crave': typeof LayoutProjectsCraveRoute
+  '/_layout/projects_/keteku': typeof LayoutProjectsKetekuRoute
+  '/_layout/projects_/details/': typeof LayoutProjectsDetailsIndexRoute
+  '/_layout/projects_/details/update/$id': typeof LayoutProjectsDetailsUpdateIdRoute
 }
 
 export interface FileRouteTypes {
@@ -240,7 +300,10 @@ export interface FileRouteTypes {
     | '/'
     | '/projects/$id'
     | '/projects/add'
-    | '/projects/update/$id'
+    | '/projects/crave'
+    | '/projects/keteku'
+    | '/projects/details'
+    | '/projects/details/update/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/about'
@@ -251,7 +314,10 @@ export interface FileRouteTypes {
     | '/'
     | '/projects/$id'
     | '/projects/add'
-    | '/projects/update/$id'
+    | '/projects/crave'
+    | '/projects/keteku'
+    | '/projects/details'
+    | '/projects/details/update/$id'
   id:
     | '__root__'
     | '/_layout'
@@ -263,7 +329,10 @@ export interface FileRouteTypes {
     | '/_layout/'
     | '/_layout/projects_/$id'
     | '/_layout/projects_/add'
-    | '/_layout/projects_/update/$id'
+    | '/_layout/projects_/crave'
+    | '/_layout/projects_/keteku'
+    | '/_layout/projects_/details/'
+    | '/_layout/projects_/details/update/$id'
   fileRoutesById: FileRoutesById
 }
 
@@ -299,7 +368,10 @@ export const routeTree = rootRoute
         "/_layout/",
         "/_layout/projects_/$id",
         "/_layout/projects_/add",
-        "/_layout/projects_/update/$id"
+        "/_layout/projects_/crave",
+        "/_layout/projects_/keteku",
+        "/_layout/projects_/details/",
+        "/_layout/projects_/details/update/$id"
       ]
     },
     "/_layout/about": {
@@ -327,15 +399,27 @@ export const routeTree = rootRoute
       "parent": "/_layout"
     },
     "/_layout/projects_/$id": {
-      "filePath": "_layout/projects_.$id.tsx",
+      "filePath": "_layout/projects_/$id.tsx",
       "parent": "/_layout"
     },
     "/_layout/projects_/add": {
-      "filePath": "_layout/projects_.add.tsx",
+      "filePath": "_layout/projects_/add.tsx",
       "parent": "/_layout"
     },
-    "/_layout/projects_/update/$id": {
-      "filePath": "_layout/projects_.update.$id.tsx",
+    "/_layout/projects_/crave": {
+      "filePath": "_layout/projects_/crave.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/projects_/keteku": {
+      "filePath": "_layout/projects_/keteku.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/projects_/details/": {
+      "filePath": "_layout/projects_/details/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/projects_/details/update/$id": {
+      "filePath": "_layout/projects_/details/update/$id.tsx",
       "parent": "/_layout"
     }
   }
