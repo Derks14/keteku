@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button.tsx";
 const Core = () => {
   return (
     <div className="text-foreground to-backgroundend bg-backgroundstart bg-gradient-to-b from-transparent">
-      <div className="font-dosis h-screen max-h-screen min-w-screen overflow-hidden text-lg font-medium">
+      <div className="font-dosis h-screen max-h-screen min-w-screen overflow-hidden font-medium">
         <Toaster />
         <Outlet />
         <TanStackRouterDevtools />

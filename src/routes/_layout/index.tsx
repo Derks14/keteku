@@ -6,11 +6,7 @@ import { DisplayCard } from "@/components/ui/display_card.tsx";
 import Morph from "@/components/ui/morph.tsx";
 import Spotify from "@/components/sections/spotify.tsx";
 
-
-
-
 const Home = () => {
-
   return (
     <>
       <Wrapper page="Home" row_cols_class="md:grid-cols-4 md:grid-rows-3">
@@ -34,7 +30,6 @@ const Home = () => {
           </DisplayCard>
         </Card>
         <div>
-
           <Morph />
         </div>
 
@@ -45,11 +40,23 @@ const Home = () => {
         <Card>
           <div></div>
         </Card>
-        <Card>
-          <div>one</div>
-        </Card>
+        <div className="row-span-2">
+          <div className="flex h-full flex-col gap-2">
+            <Card className="grow">
+              <div className="p-4">three</div>
+            </Card>
+            <Card>
+              <div className="p-4">two</div>
+            </Card>
+            <Card>
+              <div className="p-4">one</div>
+            </Card>
+          </div>
+        </div>
         <Card className="row-span-2">
-          <div className=" px-2 h-full"><Spotify /></div>
+          <div className="h-full px-2">
+            <Spotify />
+          </div>
         </Card>
         <Card>
           <div></div>
@@ -60,7 +67,6 @@ const Home = () => {
         <Card>
           <div></div>
         </Card>
-
 
         {/*change these hardcoded cards into list*/}
         {/*{works.map((work) => (*/}
@@ -71,11 +77,10 @@ const Home = () => {
         {/*    </DisplayCard>*/}
         {/*  </Card>*/}
         {/*))}*/}
-
       </Wrapper>
     </>
   );
 };
-export const Route = createFileRoute('/_layout/')({
-  component: Home
-})
+export const Route = createFileRoute("/_layout/")({
+  component: Home,
+});

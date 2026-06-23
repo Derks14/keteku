@@ -1,16 +1,15 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8000"
+const BASE_URL = import.meta.env.SERVER_URL;
 
 const api_url = `${BASE_URL}/api/`;
 
 export const http_client = axios.create({
   baseURL: api_url,
   headers: {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   },
 });
-
 
 http_client.interceptors.request.use(
   (config) => {
@@ -39,9 +38,8 @@ http_client.interceptors.request.use(
   },
   async (error) => {
     await Promise.reject(error);
-  }
+  },
 );
-
 
 http_client.interceptors.response.use(
   ({ data }) => {
@@ -49,17 +47,13 @@ http_client.interceptors.response.use(
   },
 
   (error) => {
-
     if (error.code === "ERR_NETWORK") {
-      console.error("NETWORK ERROR")
+      console.error("NETWORK ERROR");
       return Promise.reject(error);
     }
 
     // forward the problem detail body to the callers
     const problemDetail = error.response?.data ?? error;
     return Promise.reject(problemDetail);
-  }
+  },
 );
-
-
-
