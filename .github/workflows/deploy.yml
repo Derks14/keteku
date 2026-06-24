@@ -25,6 +25,8 @@ jobs:
 #        build the project
       - name: build project
         run: npm run build
+        env:
+          SERVER_URL: ${{ secrets.SERVER_URL }}
 
 #        configure aws credentials
       - name: configure aws credentials

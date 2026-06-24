@@ -1,50 +1,125 @@
-# React + TypeScript + Vite
+# Keteku Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio site for Derrick Keteku, a cloud-native software engineer based in Sydney. The site is built to present engineering work through project writeups, architecture notes, and API-backed detail pages rather than a static resume page.
 
-Currently, two official plugins are available:
+## What This Site Highlights
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Cloud-native software engineering experience
+- Distributed systems and service-oriented project work
+- Backend and infrastructure-focused case studies
+- Architecture, data flow, and observability notes
+- Published project details served from an API
+- A lightweight internal detail editor for drafting and publishing project content
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React 19
+- TypeScript
+- Vite
+- TanStack Router
+- TanStack Query
+- Tailwind CSS
+- Axios
+- React Hook Form
+- Zod
+- `@uiw/react-md-editor` command utilities for Markdown authoring
+- Sonner notifications
 
-- Configure the top-level `parserOptions` property like this:
+## Application Structure
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```text
+src/
+  components/
+    sections/        Shared layout sections and detail rendering
+    ui/              Reusable UI primitives
+    schemas/         Form validation schemas
+  routes/            TanStack Router file routes
+  services/
+    api/             API service wrappers
+    models/          Shared response and domain types
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Key routes:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- `/` - landing grid for the portfolio
+- `/about` - profile and background page
+- `/projects` - published project/detail list
+- `/projects/$id` - project detail page with Markdown/MDX rendering and table of contents
+- `/projects/details` - internal detail library
+- `/projects/add` - internal detail creation form
+- `/projects/details/update/$id` - internal detail update form
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Backend Contract
+
+The frontend expects an API base URL and calls endpoints under `/api`.
+
+Current API client behavior:
+
+```ts
+const BASE_URL = import.meta.env.SERVER_URL;
+const api_url = `${BASE_URL}/api/`;
 ```
+
+The detail pages use these resources:
+
+- `GET /api/details`
+- `GET /api/details/:id`
+- `POST /api/details`
+- `PUT /api/details/:id`
+- `DELETE /api/details/:id`
+
+The project service also includes:
+
+- `GET /api/projects`
+- `GET /api/projects/:id`
+- `POST /api/projects`
+- `PUT /api/projects/:id`
+- `DELETE /api/projects/:id`
+
+If using standard Vite environment variables, consider exposing the backend URL as a `VITE_` prefixed variable and updating the API client accordingly.
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+Run linting:
+
+```bash
+npm run lint
+```
+
+## Content Model
+
+Project detail records are API-backed and can be rendered as:
+
+- `MARKDOWN`
+- `MDX`
+- `JSON_BLOCKS`
+
+Published records are shown on the public `/projects` page when their `status` is `PUBLISHED`. Drafting, editing, previewing, and deleting detail records is handled by the internal detail routes.
+
+## Engineering Focus
+
+The portfolio is intentionally structured around engineering artifacts: project architecture, implementation notes, system tradeoffs, and backend-driven content. It is designed to fit a cloud-native software engineer whose work spans frontend presentation, API integration, distributed application design, and infrastructure-aware delivery.
