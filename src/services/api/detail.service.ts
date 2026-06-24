@@ -4,10 +4,10 @@ import { Detail } from "@/services/models/detail.models.ts";
 
 export const DetailService = {
   fetchDetails: (): Promise<ApiResponse<Detail[]>> => {
-    return http_client.get("details");
+    return http_client.get("/api/details");
   },
   getDetail: (detailId: string): Promise<ApiResponse<Detail>> => {
-    return http_client.get(`details/${detailId}`);
+    return http_client.get(`/api/details/${detailId}`);
   },
   updateDetail: ({
     detailId,
@@ -16,12 +16,12 @@ export const DetailService = {
     detailId: string;
     detail: Partial<Detail>;
   }): Promise<ApiResponse<Detail>> => {
-    return http_client.put(`details/${detailId}`, detail);
+    return http_client.put(`/api/details/${detailId}`, detail);
   },
   addDetail: (payload: Partial<Detail>): Promise<ApiResponse<Detail>> => {
-    return http_client.post("details", payload);
+    return http_client.post("/api/details", payload);
   },
   deleteDetail: (detailId: string): Promise<ApiResponse<unknown>> => {
-    return http_client.delete(`details/${detailId}`);
+    return http_client.delete(`/api/details/${detailId}`);
   },
 };

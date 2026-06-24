@@ -4,12 +4,12 @@ import { QueueResponse } from "@/services/models/spotify.models.ts";
 
 export const SpotifyService = {
   login: () => {
-    return "http://localhost:8000/window/login"
+    return `${http_client.getUri()}/window/login`;
   },
   currently_playing: () => {
-    return http_client.get('window')
+    return http_client.get("/window");
   },
   queue: (): Promise<ApiResponse<QueueResponse>> => {
-    return http_client.get('window/queue')
-  }
-}
+    return http_client.get("/window/queue");
+  },
+};
