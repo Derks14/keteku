@@ -125,11 +125,6 @@
     --color-popover-foreground: var(--popover-foreground);
     --color-popover: var(--popover);
 
-
-
-
-
-
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
@@ -146,16 +141,7 @@
 
     --animate-blob: blob 7s infinite linear;
     --animate-signature: signature 20s ease-in-out infinite;
-
-    --animate-bar-1: bar 1s ease-in-out infinite;
-    --animate-bar-2: bar 1s ease-in-out infinite 0.2s;
-    --animate-bar-3: bar 1s ease-in-out infinite 0.4s;
-
-    @keyframes bar {
-        0%, 100% { height: 20%; }
-        50% { height: 100%; }
-    }
-
+    --animate-dance: dance 2.8s ease-in-out infinite;
 
     @keyframes signature {
         0% {
@@ -169,6 +155,19 @@
         }
     }
 
+    @keyframes dance {
+        0%   { transform: scaleY(0.0001); }
+        10%  { transform: scaleY(0.45); }
+        20%  { transform: scaleY(0.9); }
+        30%  { transform: scaleY(1); }
+        40%  { transform: scaleY(0.7); }
+        50%  { transform: scaleY(0.35); }
+        60%  { transform: scaleY(0.8); }
+        70%  { transform: scaleY(0.1); }
+        80%  { transform: scaleY(0.95); }
+        90%  { transform: scaleY(0.15); }
+        100% { transform: scaleY(0.001); }
+    }
 
 
     @keyframes blob {

@@ -3,8 +3,8 @@ import { SpotifyService } from "@/services/api/spotify.service.ts";
 import { QueueResponse } from "@/services/models/spotify.models.ts";
 import { get, slice } from "lodash";
 
-import { PauseIcon } from "@heroicons/react/24/solid";
 import { MdExplicit } from "react-icons/md";
+import NowPlaying from "@/components/ui/now-playing.tsx";
 
 const Spotify = () => {
   const { data } = useQuery({
@@ -41,7 +41,7 @@ const Spotify = () => {
               <span className="mr-3">🎶</span>
               Daily Mix 1
             </p>
-            <p className="text-end text-sm text-muted-foreground">50 tracks</p>
+            <p className="text-muted-foreground text-end text-sm">50 tracks</p>
           </div>
         </div>
 
@@ -63,40 +63,33 @@ const Spotify = () => {
           </div>
 
           {/* currently playing details*/}
-          <div className="py-2 w-full">
-            <div className="flex items-center gap-2.5 ">
-              <div className="bg-[#1DB954] mt-2 animate-pulse text-white font-bold rounded-full p-1.5">
-                <PauseIcon className="size-5" />
-              </div>
-              <div className=" leading-3">
+          <div className="w-full py-2">
+            <div className="flex items-center gap-2.5">
+              <NowPlaying />
+              <div className="leading-3">
                 <div>
                   <h2 className="text-lg font-semibold text-ellipsis whitespace-nowrap">
                     {get(queueResponse, "currently_playing.name", "")}
                   </h2>
                   <div className="flex items-center gap-1">
-                    { get(queueResponse, "currently_playing.explicit", false) &&
+                    {get(queueResponse, "currently_playing.explicit", false) && (
                       <div>
-                      <MdExplicit className="size-3.5" />
-                    </div>
-                    }
+                        <MdExplicit className="size-3.5" />
+                      </div>
+                    )}
 
                     <div>
                       <p className="">
-                      {get(queueResponse, "currently_playing.artists[0].name", "")}
-                    </p>
+                        {get(queueResponse, "currently_playing.artists[0].name", "")}
+                      </p>
                     </div>
-
                   </div>
                 </div>
-                <div>
-
-                </div>
+                <div></div>
               </div>
             </div>
           </div>
-
         </div>
-
 
         {/* queue starts here */}
         <div>
@@ -122,23 +115,23 @@ const Spotify = () => {
                     </div>
                     <div className="flex items-center gap-1">
                       <div>
-                        { get(item, "explicit", false) &&
+                        {get(item, "explicit", false) && (
                           <div>
                             <MdExplicit className="size-3.5" />
                           </div>
-                        }
+                        )}
                       </div>
 
-                      <div><p>{get(item, "artists[0].name", "")}</p></div>
+                      <div>
+                        <p>{get(item, "artists[0].name", "")}</p>
+                      </div>
                     </div>
                   </div>
 
                   <div>
-                    <p className="text-sm">{convertDuration(get(item, "duration_ms", 0))}
-                    </p>
+                    <p className="text-sm">{convertDuration(get(item, "duration_ms", 0))}</p>
                   </div>
                 </div>
-
               </div>
             </div>
           ))}

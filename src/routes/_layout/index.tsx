@@ -43,7 +43,7 @@ const Home = () => {
         <div className="row-span-2">
           <div className="flex h-full flex-col gap-2">
             <Card className="grow">
-              <div className="p-4">three</div>
+              <div className="p-4">.</div>
             </Card>
             <Card>
               <div className="p-4">two</div>
