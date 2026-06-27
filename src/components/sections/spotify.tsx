@@ -11,7 +11,7 @@ const Spotify = () => {
     queryKey: ["playing"],
     queryFn: SpotifyService.queue,
     refetchInterval: 5_000,
-    // refetchIntervalInBackground: true
+    refetchIntervalInBackground: true,
   });
 
   const queueResponse: QueueResponse = data?.data ?? ({} as QueueResponse);
