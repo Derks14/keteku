@@ -9,9 +9,11 @@ export default function Footer() {
           <div className="my-2">
             <Signature />
           </div>
-          <div className="text-lg font-semibold">
+          <div className="text-muted-foreground font-medium tracking-wider">
             <p>
-              <span className="mr-2 font-semibold">© {new Date().getFullYear()} Keteku. </span>
+              <span className="text-muted-foreground mr-2">
+                © {new Date().getFullYear()} Keteku.{" "}
+              </span>
               Built with ❤️ by yours truly.
             </p>
           </div>

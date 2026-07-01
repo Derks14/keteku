@@ -64,18 +64,6 @@ const About = () => {
               </div>
             </div>
           </div>
-
-          {/*<DisplayCard>*/}
-          {/*  <div className="mb-4">*/}
-          {/*    <img className="max-h-16" src="/src/assets/uts-logo.png" />*/}
-          {/*  </div>*/}
-          {/*  <div>*/}
-          {/*    <div className="text-muted-foreground">EDUCATION</div>*/}
-          {/*    <div>*/}
-          {/*      <h2 className="text-xl font-bold">Masters of Eng. CyberSecurity</h2>*/}
-          {/*    </div>*/}
-          {/*  </div>*/}
-          {/*</DisplayCard>*/}
         </Card>
         <Card className="h-auto min-h-[12rem]">
           <div className="flex h-full flex-col justify-between">
