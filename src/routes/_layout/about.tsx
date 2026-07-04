@@ -4,6 +4,7 @@ import Card from "@/components/ui/card.tsx";
 import { DisplayCard } from "@/components/ui/display_card.tsx";
 import MapBox from "@/components/sections/map.tsx";
 import { ArrowUpRight, GraduationCap } from "lucide-react";
+import utsLogo from "@/assets/uts-logo.png";
 
 const About = () => {
   return (
@@ -53,7 +54,7 @@ const About = () => {
               <div className="p-2">
                 <GraduationCap className="size-7" />
               </div>
-              <img className="max-h-22" src="/src/assets/uts-logo.png" />
+              <img className="max-h-22" src={utsLogo} />
             </div>
             <div className="p-4">
               <div>
