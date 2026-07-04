@@ -10,6 +10,7 @@ import { FaGithub, FaReact } from "react-icons/fa";
 import TechStack from "@/components/ui/stack.tsx";
 import { SiMongodb, SiSpringboot } from "react-icons/si";
 import awsCert from "@/assets/aws-cert.webp";
+import img from "@/assets/img.png";
 
 const Home = () => {
   return (
@@ -17,8 +18,11 @@ const Home = () => {
       <Wrapper page="Home" row_cols_class="md:grid-cols-4 md:grid-rows-3">
         <Card className="md:col-span-2">
           <Link to="/about" className="flex h-full flex-col-reverse">
-            <div className="flex items-center justify-between p-4 md:p-6">
+            <div className="flex items-end justify-between p-4 md:p-6">
               <div className=" ">
+                <div>
+                  <img src={img} alt="Keteku" className="h-28 w-28 object-contain" />
+                </div>
                 <div>
                   <h1 className={cn("text-5xl font-bold tracking-wide")}>Derrick Keteku</h1>
                 </div>
@@ -92,7 +96,7 @@ const Home = () => {
               <div>
                 <div>
                   <h3 className="text-muted-foreground text-sm tracking-[0.22em] uppercase">
-                    Full Stack Application
+                    Microservice system
                   </h3>
                 </div>
                 <div>
