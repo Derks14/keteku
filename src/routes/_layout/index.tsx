@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { cn } from "@/components/lib/utils.ts";
 import Card from "@/components/ui/card.tsx";
 import Wrapper from "@/components/ui/wrapper.tsx";
@@ -16,7 +16,7 @@ const Home = () => {
     <>
       <Wrapper page="Home" row_cols_class="md:grid-cols-4 md:grid-rows-3">
         <Card className="md:col-span-2">
-          <div className="flex h-full flex-col-reverse">
+          <Link to="/about" className="flex h-full flex-col-reverse">
             <div className="flex items-center justify-between p-4 md:p-6">
               <div className=" ">
                 <div>
@@ -30,7 +30,7 @@ const Home = () => {
                 <ArrowUpRight className="text-muted-foreground group-hover:text-foreground size-6 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
-          </div>
+          </Link>
         </Card>
         <Card>
           <DisplayCard>
@@ -148,28 +148,37 @@ const Home = () => {
             </Card>
             <Card className="overflow-hidden !border-[#33465f] !bg-[#232F3E] text-white">
               {/* cloud practitioner card*/}
-              <div className="flex h-full">
-                <div className="relative h-full w-1/3 shrink-0 overflow-hidden bg-[#232F3E]">
-                  <img
-                    src={awsCert}
-                    alt="AWS certification badge"
-                    className="h-full w-[200%] max-w-none object-cover object-right"
-                  />
-                  <div className="absolute inset-0 bg-[#232F3E]/35" />
-                </div>
-                <div className="flex min-w-0 flex-1 bg-[#232F3E]">
-                  <div className="flex h-full flex-col justify-center p-4 md:p-6">
-                    <div>
-                      <h3 className="tracking-[0.22em] text-[#FF9900] uppercase">
-                        CERTIFIED PROFESSIONAL
-                      </h3>
-                    </div>
-                    <div>
-                      <h1 className="text-2xl font-semibold">AWS Cloud Practitioner</h1>
+              <a
+                target="_blank"
+                href="https://www.credly.com/badges/dd5a391c-5e1a-42d5-b2c8-602aee951370"
+              >
+                <div className="flex h-full">
+                  <div className="flex flex-1 bg-[#232F3E]">
+                    <div className="flex h-full flex-col justify-center p-4">
+                      <div className="flex-1">
+                        <ArrowUpRight className="group-hover:text-foreground size-4 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </div>
+                      <div>
+                        <h3 className="text-sm tracking-[0.22em] text-[#FF9900] uppercase">
+                          CERTIFIED PROFESSIONAL
+                        </h3>
+                      </div>
+                      <div>
+                        <h1 className="text-xl font-semibold">AWS Cloud Practitioner</h1>
+                      </div>
                     </div>
                   </div>
+
+                  <div className="relative h-full w-1/3 overflow-hidden bg-[#232F3E]">
+                    <img
+                      src={awsCert}
+                      alt="AWS certification badge"
+                      className="h-full w-full object-cover"
+                    />
+                    {/*<div className="absolute inset-0 bg-[#232F3E]/35" />*/}
+                  </div>
                 </div>
-              </div>
+              </a>
             </Card>
           </div>
         </div>
@@ -207,7 +216,7 @@ const Home = () => {
                 <h1 className="text-7xl">🛡️</h1>
               </div>
               <div>
-                <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-300">
+                <span className="rounded-full bg-red-500/10 px-2.5 py-1 text-xs font-medium text-red-700 dark:text-red-300">
                   Cybersecurity
                 </span>
               </div>
