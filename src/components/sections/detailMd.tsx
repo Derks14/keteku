@@ -49,7 +49,7 @@ function createMarkdownComponents(tableOfContents: TableOfContentsItem[]): Compo
     h1: ({ children }) => (
       <h1
         id={getHeadingId(children)}
-        className="font-dosis text-foreground mt-8 scroll-mt-24 text-4xl font-semibold tracking-tight first:mt-0 md:text-5xl"
+        className="font-dosis text-foreground mt-8 scroll-mt-24 text-4xl leading-[0.81] font-semibold tracking-tight first:mt-0 md:text-5xl"
       >
         {children}
       </h1>
@@ -57,7 +57,7 @@ function createMarkdownComponents(tableOfContents: TableOfContentsItem[]): Compo
     h2: ({ children }) => (
       <h2
         id={getHeadingId(children)}
-        className="font-dosis text-foreground mt-8 scroll-mt-24 border-b border-black/5 pb-2 text-2xl font-semibold tracking-tight md:text-3xl dark:border-white/10"
+        className="font-dosis text-foreground mt-8 scroll-mt-24 border-b border-black/5 pb-2 text-2xl leading-[0.81] font-semibold tracking-tight md:text-3xl dark:border-white/10"
       >
         {children}
       </h2>
@@ -65,7 +65,7 @@ function createMarkdownComponents(tableOfContents: TableOfContentsItem[]): Compo
     h3: ({ children }) => (
       <h3
         id={getHeadingId(children)}
-        className="font-dosis text-foreground mt-6 scroll-mt-24 text-xl font-semibold tracking-tight md:text-2xl"
+        className="font-dosis text-foreground mt-6 scroll-mt-24 text-xl leading-[0.81] font-semibold tracking-tight md:text-2xl"
       >
         {children}
       </h3>
@@ -73,13 +73,13 @@ function createMarkdownComponents(tableOfContents: TableOfContentsItem[]): Compo
     h4: ({ children }) => (
       <h4
         id={getHeadingId(children)}
-        className="text-foreground mt-5 scroll-mt-24 text-lg font-semibold tracking-tight"
+        className="text-foreground mt-5 scroll-mt-24 text-lg leading-[0.81] font-semibold tracking-tight"
       >
         {children}
       </h4>
     ),
     p: ({ children }) => (
-      <p className="text-muted-foreground my-4 max-w-3xl leading-8">{children}</p>
+      <p className="text-muted-foreground my-4 max-w-3xl leading-[1.62rem]">{children}</p>
     ),
     a: ({ href, children }) => (
       <a
@@ -101,10 +101,10 @@ function createMarkdownComponents(tableOfContents: TableOfContentsItem[]): Compo
         {children}
       </ol>
     ),
-    li: ({ children }) => <li className="pl-1 leading-7">{children}</li>,
+    li: ({ children }) => <li className="pl-1 leading-[1.4175rem]">{children}</li>,
     blockquote: ({ children }) => (
       <blockquote className="border-primary/15 bg-primary/5 text-foreground dark:border-primary/20 dark:bg-primary/10 my-6 rounded-2xl border px-5 py-4 shadow-sm">
-        <div className="text-muted-foreground text-sm leading-7">{children}</div>
+        <div className="text-muted-foreground text-sm leading-[1.4175rem]">{children}</div>
       </blockquote>
     ),
     hr: () => <hr className="my-8 border-black/10 dark:border-white/10" />,
