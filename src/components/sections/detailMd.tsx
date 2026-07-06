@@ -1,5 +1,8 @@
 import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkToc from "remark-toc";
+import remarkBreaks from "remark-breaks";
 import { isValidElement, useMemo, type ComponentPropsWithoutRef, type ReactNode } from "react";
 
 import {
@@ -160,7 +163,12 @@ export default function DetailMd({ content, tableOfContents }: DetailMdProps) {
 
   return (
     <article className="detail-markdown max-w-none border border-black/5 px-6 py-4 md:px-6 md:py-6 dark:border-white/10 dark:from-white/[0.04]">
-      <ReactMarkdown components={markdownComponents}>{content}</ReactMarkdown>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, remarkBreaks, remarkToc]}
+        components={markdownComponents}
+      >
+        {content}
+      </ReactMarkdown>
     </article>
   );
 }
