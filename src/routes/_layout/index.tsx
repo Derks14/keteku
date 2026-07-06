@@ -53,61 +53,65 @@ const Home = () => {
         </div>
 
         <Card>
-          <DisplayCard>
-            <div>
-              <h3 className="text-muted-foreground tracking tracking-[0.22em] uppercase">
-                full stack portfolio
-              </h3>
-            </div>
-            <div>
-              <h2 className="text-2xl font-semibold">Deploying & Building Keteku</h2>
-            </div>
-          </DisplayCard>
+          <Link to="/projects/$id" params={{ id: "6a4b39547386b9b9beab919c" }}>
+            <DisplayCard>
+              <div>
+                <h3 className="text-muted-foreground tracking tracking-[0.22em] uppercase">
+                  full stack portfolio
+                </h3>
+              </div>
+              <div>
+                <h2 className="text-2xl font-semibold">Deploying & Building Keteku</h2>
+              </div>
+            </DisplayCard>
+          </Link>
         </Card>
 
         <Card>
-          <div className="flex h-full flex-col justify-between p-4 md:p-6">
-            <div className="flex items-start justify-between">
-              <div>
-                <h1 className="text-7xl">🛡️</h1>
-              </div>
-              <div>
-                <div className="space-y-1">
-                  <TechStack className="" name="React">
-                    <FaReact />
-                  </TechStack>
-                  <TechStack
-                    name="Spring"
-                    className="bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
-                  >
-                    <SiSpringboot />
-                  </TechStack>
+          <Link to="/projects/$id" params={{ id: "6a4b36e37386b9b9beab919b" }}>
+            <div className="flex h-full flex-col justify-between p-4 md:p-6">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h1 className="text-7xl">🔗</h1>
+                </div>
+                <div>
+                  <div className="space-y-1">
+                    <TechStack className="" name="React">
+                      <FaReact />
+                    </TechStack>
+                    <TechStack
+                      name="Spring"
+                      className="bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                    >
+                      <SiSpringboot />
+                    </TechStack>
 
-                  <TechStack
-                    name="MongoDB"
-                    className="bg-emerald-500/10 text-green-700 dark:text-green-300"
-                  >
-                    <SiMongodb />
-                  </TechStack>
+                    <TechStack
+                      name="MongoDB"
+                      className="bg-emerald-500/10 text-green-700 dark:text-green-300"
+                    >
+                      <SiMongodb />
+                    </TechStack>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <div>
+                    <h3 className="text-muted-foreground text-sm tracking-[0.22em] uppercase">
+                      Microservice system
+                    </h3>
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-semibold">Atom.</h2>
+                  </div>
+                </div>
+                <div>
+                  <ArrowUpRight className="text-muted-foreground group-hover:text-foreground size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-between">
-              <div>
-                <div>
-                  <h3 className="text-muted-foreground text-sm tracking-[0.22em] uppercase">
-                    Microservice system
-                  </h3>
-                </div>
-                <div>
-                  <h2 className="text-2xl font-semibold">Atom.</h2>
-                </div>
-              </div>
-              <div>
-                <ArrowUpRight className="text-muted-foreground group-hover:text-foreground size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </div>
-            </div>
-          </div>
+          </Link>
         </Card>
         <div className="row-span-2">
           <div className="flex h-full flex-col gap-2">
@@ -217,11 +221,12 @@ const Home = () => {
             </div>
           </Link>
         </Card>
+
         <Card>
           <div className="flex h-full flex-col justify-between p-4 md:p-6">
             <div className="flex items-start justify-between">
               <div>
-                <h1 className="text-7xl">🛡️</h1>
+                <h1 className="text-7xl">🛡☁️</h1>
               </div>
               <div>
                 <span className="rounded-full bg-red-500/10 px-2.5 py-1 text-xs font-medium text-red-700 dark:text-red-300">
