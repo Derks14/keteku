@@ -192,7 +192,11 @@ const Home = () => {
           </div>
         </Card>
         <Card>
-          <div className="flex h-full flex-col justify-between p-4 md:p-6">
+          <Link
+            to="/projects/$id"
+            params={{ id: "6a48cee87386b9b9beab9197" }}
+            className="flex h-full flex-col justify-between p-4 md:p-6"
+          >
             <div>
               <h1 className="text-7xl"></h1>
             </div>
@@ -204,14 +208,14 @@ const Home = () => {
                   </h3>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-semibold">Building Fullstack Apps.</h2>
+                  <h2 className="text-2xl font-semibold">Building Distributed Systems.</h2>
                 </div>
               </div>
               <div>
                 <ArrowUpRight className="text-muted-foreground group-hover:text-foreground size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
-          </div>
+          </Link>
         </Card>
         <Card>
           <div className="flex h-full flex-col justify-between p-4 md:p-6">

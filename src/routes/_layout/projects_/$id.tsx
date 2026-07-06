@@ -67,7 +67,7 @@ function RouteComponent() {
 
       <div className="col-span-3 grid gap-3 lg:grid-cols-[minmax(0,1fr)_18rem]">
         <Card className="h-auto overflow-hidden">
-          <div className="p-5 md:p-6">
+          <div className="">
             {renderContent(detail.content, detail.contentFormat, tableOfContents)}
           </div>
         </Card>
@@ -129,13 +129,13 @@ function renderContent(content: string, format: string, tableOfContents: TableOf
       const parsed = JSON.parse(content);
 
       return (
-        <pre className="overflow-x-auto rounded-3xl border border-black/5 bg-[#0f1115] p-5 text-sm text-zinc-100 shadow-xl dark:border-white/10">
+        <pre className="overflow-x-auto rounded-3xl bg-[#0f1115] p-5 text-sm text-zinc-100 shadow-xl">
           {JSON.stringify(parsed, null, 2)}
         </pre>
       );
     } catch {
       return (
-        <div className="bg-muted/20 text-muted-foreground rounded-3xl border border-black/5 px-6 py-5 leading-8 whitespace-pre-wrap dark:border-white/10 dark:bg-white/[0.04]">
+        <div className="bg-muted/20 text-muted-foreground rounded-3xl px-3 py-2 leading-8 whitespace-pre-wrap dark:bg-white/[0.04]">
           {content}
         </div>
       );

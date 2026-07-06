@@ -159,7 +159,7 @@ export default function DetailMd({ content, tableOfContents }: DetailMdProps) {
   const markdownComponents = createMarkdownComponents(tableOfContents ?? generatedTableOfContents);
 
   return (
-    <article className="detail-markdown from-background via-background to-muted/20 max-w-none rounded-3xl border border-black/5 bg-gradient-to-br px-6 py-6 md:px-8 md:py-8 dark:border-white/10 dark:from-white/[0.04] dark:via-white/[0.03] dark:to-white/[0.02]">
+    <article className="detail-markdown max-w-none border border-black/5 px-6 py-2 md:px-6 md:py-2 dark:border-white/10 dark:from-white/[0.04]">
       <ReactMarkdown components={markdownComponents}>{content}</ReactMarkdown>
     </article>
   );
