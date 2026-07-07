@@ -2,9 +2,59 @@ import { useQuery } from "@tanstack/react-query";
 import { SpotifyService } from "@/services/api/spotify.service.ts";
 import { QueueResponse } from "@/services/models/spotify.models.ts";
 import { get, slice } from "lodash";
+import { useEffect, useState } from "react";
 
 import { MdExplicit } from "react-icons/md";
 import NowPlaying from "@/components/ui/now-playing.tsx";
+
+const FALLBACK_IMAGE =
+  "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png";
+
+const LAST_SPOTIFY_QUEUE_KEY = "LAST_SPOTIFY_QUEUE";
+
+const hasPlayableTrack = (
+  queueResponse: QueueResponse | null | undefined,
+): queueResponse is QueueResponse => {
+  return Boolean(queueResponse?.currently_playing?.id);
+};
+
+const readLastSpotifyQueue = () => {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const cachedQueue = window.localStorage.getItem(LAST_SPOTIFY_QUEUE_KEY);
+    if (!cachedQueue) return null;
+
+    const parsedQueue = JSON.parse(cachedQueue) as QueueResponse;
+    return hasPlayableTrack(parsedQueue) ? parsedQueue : null;
+  } catch {
+    window.localStorage.removeItem(LAST_SPOTIFY_QUEUE_KEY);
+    return null;
+  }
+};
+
+const writeLastSpotifyQueue = (queueResponse: QueueResponse) => {
+  try {
+    window.localStorage.setItem(LAST_SPOTIFY_QUEUE_KEY, JSON.stringify(queueResponse));
+  } catch {
+    // Keep the in-memory fallback even if browser storage is unavailable.
+  }
+};
+
+const useLastSpotifyQueue = (queueResponse: QueueResponse | undefined) => {
+  const [lastQueueResponse, setLastQueueResponse] = useState<QueueResponse | null>(
+    readLastSpotifyQueue,
+  );
+
+  useEffect(() => {
+    if (!hasPlayableTrack(queueResponse)) return;
+
+    setLastQueueResponse(queueResponse);
+    writeLastSpotifyQueue(queueResponse);
+  }, [queueResponse]);
+
+  return hasPlayableTrack(queueResponse) ? queueResponse : lastQueueResponse;
+};
 
 const Spotify = () => {
   const { data } = useQuery({
@@ -12,10 +62,12 @@ const Spotify = () => {
     queryFn: SpotifyService.queue,
     refetchInterval: 5_000,
     refetchIntervalInBackground: true,
+    refetchOnWindowFocus: true,
+    retry: 3,
+    staleTime: 0,
   });
 
-  const queueResponse: QueueResponse = data?.data ?? ({} as QueueResponse);
-  console.log(queueResponse);
+  const queueResponse = useLastSpotifyQueue(data?.data);
 
   const convertDuration = (duration: number) => {
     const minutes = Math.floor(duration / 60000);
@@ -32,7 +84,7 @@ const Spotify = () => {
           <div className="">
             <img
               className="aspect-auto h-10"
-              src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png"
+              src={FALLBACK_IMAGE}
               alt=""
             />
           </div>
@@ -55,7 +107,7 @@ const Spotify = () => {
                 src={get(
                   queueResponse,
                   "currently_playing.album.images[0].url",
-                  "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png",
+                  FALLBACK_IMAGE,
                 )}
                 alt="currently playing album art"
               />
@@ -93,7 +145,7 @@ const Spotify = () => {
 
         {/* queue starts here */}
         <div>
-          {slice(queueResponse.queue, 0, 3).map((item) => (
+          {slice(queueResponse?.queue ?? [], 0, 3).map((item) => (
             <div key={item.id} className="my-2">
               <div className="flex items-start gap-2">
                 <div className="aspect-square h-12">
@@ -102,7 +154,7 @@ const Spotify = () => {
                     src={get(
                       item,
                       "album.images[0].url",
-                      "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png",
+                      FALLBACK_IMAGE,
                     )}
                     alt="album art"
                   />
