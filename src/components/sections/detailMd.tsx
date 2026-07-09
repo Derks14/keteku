@@ -4,12 +4,14 @@ import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import remarkBreaks from "remark-breaks";
 import { isValidElement, useMemo, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize"; // 1. Import sanitize tools
 
 import {
   getMarkdownTableOfContents,
   normalizeHeadingTitle,
   type TableOfContentsItem,
 } from "@/components/sections/detailMd.utils.ts";
+import rehypeRaw from "rehype-raw";
 
 type DetailMdProps = {
   content: string;
@@ -161,10 +163,22 @@ export default function DetailMd({ content, tableOfContents }: DetailMdProps) {
   const generatedTableOfContents = useMemo(() => getMarkdownTableOfContents(content), [content]);
   const markdownComponents = createMarkdownComponents(tableOfContents ?? generatedTableOfContents);
 
+  const customSanitizeSchema = {
+    ...defaultSchema,
+    attributes: {
+      ...defaultSchema.attributes,
+      div: [
+        ...(defaultSchema.attributes?.div || []),
+        "style", // Explicitly allow inline styling
+      ],
+    },
+  };
+
   return (
     <article className="detail-markdown max-w-none border border-black/5 px-6 py-4 md:px-6 md:py-6 dark:border-white/10 dark:from-white/[0.04]">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkBreaks, remarkToc]}
+        rehypePlugins={[rehypeRaw, [rehypeSanitize, customSanitizeSchema]]}
         components={markdownComponents}
       >
         {content}
